@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Dealer naem:</strong>
+  <%= @dealer.dealer_naem %>
+</p>
+
+<p>
+  <strong>Dealer contact:</strong>
+  <%= @dealer.dealer_contact %>
+</p>
+
+<p>
+  <strong>Dealer address:</strong>
+  <%= @dealer.dealer_address %>
+</p>
+
+<%= link_to 'Edit', edit_dealer_path(@dealer) %> |
+<%= link_to 'Back', dealers_path %>

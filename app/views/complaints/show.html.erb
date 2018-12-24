@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Call date:</strong>
+  <%= @complaint.call_date %>
+</p>
+
+<p>
+  <strong>Dealer:</strong>
+  <%= @complaint.dealer %>
+</p>
+
+<p>
+  <strong>Product name:</strong>
+  <%= @complaint.product_name %>
+</p>
+
+<p>
+  <strong>Fault:</strong>
+  <%= @complaint.fault %>
+</p>
+
+<p>
+  <strong>Complaint status:</strong>
+  <%= @complaint.complaint_status %>
+</p>
+
+<p>
+  <strong>Call history:</strong>
+  <%= @complaint.call_history %>
+</p>
+
+<p>
+  <strong>Warranty:</strong>
+  <%= @complaint.warranty %>
+</p>
+
+<p>
+  <strong>Mechenic:</strong>
+  <%= @complaint.mechenic %>
+</p>
+
+<p>
+  <strong>Site address:</strong>
+  <%= @complaint.site_address %>
+</p>
+
+<p>
+  <strong>Coustomer name:</strong>
+  <%= @complaint.coustomer_name %>
+</p>
+
+<p>
+  <strong>Coustomer address:</strong>
+  <%= @complaint.coustomer_address %>
+</p>
+
+<p>
+  <strong>Coustomer city:</strong>
+  <%= @complaint.coustomer_city %>
+</p>
+
+<p>
+  <strong>Coustomer phone:</strong>
+  <%= @complaint.coustomer_phone %>
+</p>
+
+<p>
+  <strong>Product sr no:</strong>
+  <%= @complaint.product_sr_no %>
+</p>
+
+<p>
+  <strong>Purchase date:</strong>
+  <%= @complaint.purchase_date %>
+</p>
+
+<%= link_to 'Edit', edit_complaint_path(@complaint) %> |
+<%= link_to 'Back', complaints_path %>

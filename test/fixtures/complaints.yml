@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  call_date: 2018-12-16 00:16:29
+  dealer: MyString
+  product_name: MyString
+  fault: MyString
+  complaint_status: MyString
+  call_history: MyString
+  warranty: MyString
+  mechenic: MyString
+  site_address: MyString
+  coustomer_name: MyString
+  coustomer_address: MyString
+  coustomer_city: MyString
+  coustomer_phone: MyString
+  product_sr_no: MyString
+  purchase_date: MyString
+
+two:
+  call_date: 2018-12-16 00:16:29
+  dealer: MyString
+  product_name: MyString
+  fault: MyString
+  complaint_status: MyString
+  call_history: MyString
+  warranty: MyString
+  mechenic: MyString
+  site_address: MyString
+  coustomer_name: MyString
+  coustomer_address: MyString
+  coustomer_city: MyString
+  coustomer_phone: MyString
+  product_sr_no: MyString
+  purchase_date: MyString

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mec_name: MyString
+  mobile_num_1: MyString
+  mobile_num2: MyString
+  address: MyString
+  district: 
+
+two:
+  mec_name: MyString
+  mobile_num_1: MyString
+  mobile_num2: MyString
+  address: MyString
+  district: 

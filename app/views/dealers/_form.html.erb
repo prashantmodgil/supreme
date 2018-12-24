@@ -1,0 +1,32 @@
+<%= form_with(model: dealer, local: true) do |form| %>
+  <% if dealer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dealer.errors.count, "error") %> prohibited this dealer from being saved:</h2>
+
+      <ul>
+      <% dealer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :dealer_naem %>
+    <%= form.text_field :dealer_naem %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dealer_contact %>
+    <%= form.text_field :dealer_contact %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dealer_address %>
+    <%= form.text_field :dealer_address %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

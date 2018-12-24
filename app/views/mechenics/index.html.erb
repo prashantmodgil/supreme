@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Mechenics</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mec name</th>
+      <th>Mobile num 1</th>
+      <th>Mobile num2</th>
+      <th>Address</th>
+      <th>District</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mechenics.each do |mechenic| %>
+      <tr>
+        <td><%= mechenic.mec_name %></td>
+        <td><%= mechenic.mobile_num_1 %></td>
+        <td><%= mechenic.mobile_num2 %></td>
+        <td><%= mechenic.address %></td>
+        <td><%= mechenic.district %></td>
+        <td><%= link_to 'Show', mechenic %></td>
+        <td><%= link_to 'Edit', edit_mechenic_path(mechenic) %></td>
+        <td><%= link_to 'Destroy', mechenic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mechenic', new_mechenic_path %>
