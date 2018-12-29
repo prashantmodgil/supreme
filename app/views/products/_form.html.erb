@@ -11,22 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name, :required => true%>
-    <%= form.text_field :name %>
-  </div>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2">
+      Product Name
+    </label>
+    <div class="col">
+      <%= form.text_field :name,:required => true,class: "form-control",placeholder: "Add a new Product"  %>
+    </div>
+    <br>
+    <label for="inputEmail3" class="col-sm-2">
+      Brand
+    </label>
+    <%= form.collection_select :brand, Brand.all,:brand_name,:brand_name,:include_blank => "Select a Brand",class: "form-control" %>
 
-  <div class="field">
-    <%= form.label :sr_number %>
-    <%= form.text_field :sr_number %>
-  </div>
 
-  <div class="field">
-    <%= form.label :brand,:required => true%>
-    <%= form.collection_select :brand, Brand.all,:brand_name,:brand_name,:include_blank => "Select a Brand" %>
-  </div>
+    <% if (params[:controller]=='products'&& params[:action] == 'new')%>
+      <div class="col">
+        <%= form.submit "Create Product", class: 'btn btn-success'%>
+        <%= link_to 'Cancel', products_path,class: "btn btn-secondary"%>
+      </div>
+      <%else%>
+      <div class="col">
+        <%= form.submit "Update Product", class: 'btn btn-success'%>
+        <%= link_to 'Cancel', products_path,class: "btn btn-secondary"%>
+        <%= link_to 'Show Product', @product,class: "btn btn-secondary"%>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+      </div>
+      <%end%>
+
+    </div>
+
+  <% end %>

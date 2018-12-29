@@ -11,32 +11,53 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :mec_name %>
-    <%= form.text_field :mec_name %>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2">
+      Mechenic Name
+    </label>
+    <div class="col">
+      <%= form.text_field :mec_name,class:"form-control",placeholder:"Mechenic's name" %>
+    </div>
+
+    <label for="inputEmail3" class="col-sm-2">
+      Primary Mobile Number
+    </label>
+    <div class="col">
+      <%= form.text_field :mobile_num_1,class:"form-control",placeholder:"10 digits" %>
+    </div>
+
+    <label for="inputEmail3" class="col-sm-2">
+      Secondary Mobile Number
+    </label>
+    <div class="col">
+      <%= form.text_field :mobile_num2,class:"form-control",placeholder:"10 digits only" %>
+    </div>
+
+
+    <label for="inputEmail3" class="col-sm-2">
+      Address
+    </label>
+    <div class="col">
+      <%= form.text_field :address,class:"form-control",placeholder:"Complete Address" %>
+    </div>
+
+    <label for="inputEmail3" class="col-sm-2">
+      District
+    </label>
+    <div class="col">
+    <%= form.text_field :district,class:"form-control",placeholder:"District Name" %>
   </div>
 
-  <div class="field">
-    <%= form.label :mobile_num_1 %>
-    <%= form.text_field :mobile_num_1 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :mobile_num2 %>
-    <%= form.text_field :mobile_num2 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :district %>
-    <%= form.text_field :district %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <% if (params[:controller]=='mechenics'&& params[:action] == 'new')%>
+    <div class="col">
+      <%= form.submit "Create Mechenic", class: 'btn btn-success'%>
+      <%= link_to 'Cancel', mechenics_path,class: "btn btn-secondary"%>
+    </div>
+    <%else%>
+    <div class="col">
+      <%= form.submit "Update Mechenic", class: 'btn btn-success'%>
+      <%= link_to 'Cancel',mechenics_path,class: "btn btn-secondary"%>
+      <%= link_to 'Dealer Details', @mechenic,class: "btn btn-secondary"%>
+    </div>
+    <%end%>
 <% end %>
