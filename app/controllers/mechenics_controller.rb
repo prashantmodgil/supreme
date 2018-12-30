@@ -24,7 +24,6 @@ class MechenicsController < ApplicationController
   # POST /mechenics
   # POST /mechenics.json
   def create
-    byebug
     @mechenic = Mechenic.new(mechenic_params)
 
     respond_to do |format|

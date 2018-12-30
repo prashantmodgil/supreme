@@ -16,7 +16,7 @@ class DealersTest < ApplicationSystemTestCase
 
     fill_in "Dealer address", with: @dealer.dealer_address
     fill_in "Dealer contact", with: @dealer.dealer_contact
-    fill_in "Dealer naem", with: @dealer.dealer_naem
+    fill_in "Dealer naem", with: @dealer.dealer_name
     click_on "Create Dealer"
 
     assert_text "Dealer was successfully created"
@@ -29,7 +29,7 @@ class DealersTest < ApplicationSystemTestCase
 
     fill_in "Dealer address", with: @dealer.dealer_address
     fill_in "Dealer contact", with: @dealer.dealer_contact
-    fill_in "Dealer naem", with: @dealer.dealer_naem
+    fill_in "Dealer naem", with: @dealer.dealer_name
     click_on "Update Dealer"
 
     assert_text "Dealer was successfully updated"

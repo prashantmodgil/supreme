@@ -33,13 +33,13 @@ ActiveRecord::Schema.define(version: 2018_12_24_081514) do
     t.string "coustomer_city"
     t.string "coustomer_phone"
     t.string "product_sr_no"
-    t.string "purchase_date"
+    t.datetime "purchase_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "dealers", force: :cascade do |t|
-    t.string "dealer_naem"
+    t.string "dealer_name"
     t.string "dealer_contact"
     t.string "dealer_address"
     t.datetime "created_at", null: false
@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 2018_12_24_081514) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.string "sr_number"
     t.string "brand"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

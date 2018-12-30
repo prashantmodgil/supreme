@@ -17,7 +17,7 @@ class DealersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create dealer" do
     assert_difference('Dealer.count') do
-      post dealers_url, params: { dealer: { dealer_address: @dealer.dealer_address, dealer_contact: @dealer.dealer_contact, dealer_naem: @dealer.dealer_naem } }
+      post dealers_url, params: { dealer: { dealer_address: @dealer.dealer_address, dealer_contact: @dealer.dealer_contact, dealer_name: @dealer.dealer_name } }
     end
 
     assert_redirected_to dealer_url(Dealer.last)
@@ -34,7 +34,7 @@ class DealersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update dealer" do
-    patch dealer_url(@dealer), params: { dealer: { dealer_address: @dealer.dealer_address, dealer_contact: @dealer.dealer_contact, dealer_naem: @dealer.dealer_naem } }
+    patch dealer_url(@dealer), params: { dealer: { dealer_address: @dealer.dealer_address, dealer_contact: @dealer.dealer_contact, dealer_name: @dealer.dealer_name } }
     assert_redirected_to dealer_url(@dealer)
   end
 

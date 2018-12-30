@@ -15,7 +15,7 @@ class CreateComplaints < ActiveRecord::Migration[5.2]
       t.string :coustomer_city
       t.string :coustomer_phone
       t.string :product_sr_no
-      t.string :purchase_date
+      t.datetime :purchase_date
 
       t.timestamps
     end

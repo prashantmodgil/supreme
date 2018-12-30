@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
-
+<div class="container-fluid">
 <h1>Complaints</h1>
 
-<table>
+<table class="table table-dark table-hover">
   <thead>
     <tr>
+      <th>Call UID</th>
       <th>Call date</th>
       <th>Dealer</th>
       <th>Product name</th>
@@ -13,20 +14,13 @@
       <th>Call history</th>
       <th>Warranty</th>
       <th>Mechenic</th>
-      <th>Site address</th>
-      <th>Coustomer name</th>
-      <th>Coustomer address</th>
-      <th>Coustomer city</th>
-      <th>Coustomer phone</th>
-      <th>Product sr no</th>
-      <th>Purchase date</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @complaints.each do |complaint| %>
       <tr>
+        <td><%= complaint.id %></td>
         <td><%= complaint.call_date %></td>
         <td><%= complaint.dealer %></td>
         <td><%= complaint.product_name %></td>
@@ -35,16 +29,11 @@
         <td><%= complaint.call_history %></td>
         <td><%= complaint.warranty %></td>
         <td><%= complaint.mechenic %></td>
-        <td><%= complaint.site_address %></td>
-        <td><%= complaint.coustomer_name %></td>
-        <td><%= complaint.coustomer_address %></td>
-        <td><%= complaint.coustomer_city %></td>
-        <td><%= complaint.coustomer_phone %></td>
-        <td><%= complaint.product_sr_no %></td>
-        <td><%= complaint.purchase_date %></td>
-        <td><%= link_to 'Show', complaint %></td>
-        <td><%= link_to 'Edit', edit_complaint_path(complaint) %></td>
-        <td><%= link_to 'Destroy', complaint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+        <div style="float:right">
+        <%= link_to 'Show', complaint %>
+        <%= link_to 'Edit', edit_complaint_path(complaint) %>
+        <%= link_to 'Destroy', complaint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -52,4 +41,5 @@
 
 <br>
 
-<%= link_to 'New Complaint', new_complaint_path %>
+<%= link_to 'New Complaint', new_complaint_path, class: "btn btn-secondary" %>
+</div>

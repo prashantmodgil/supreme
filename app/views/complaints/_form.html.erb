@@ -11,82 +11,127 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :call_date %>
-    <%= form.datetime_select :call_date %>
+<div class="form-group">
+  <label for="inputEmail3" class="col-sm-2">
+    Call Date
+  </label>
+  <div class="col">
+    <%= form.datetime_local_field :call_date ,class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :dealer %>
-    <%= form.text_field :dealer %>
+  <label for="inputEmail3" class="col-sm-2">
+    Dealer
+  </label>
+  <div class="col">
+    <%= form.collection_select :dealer, Dealer.all,:dealer_name,:dealer_name,:include_blank => "Select a Dealer",class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :product_name %>
-    <%= form.text_field :product_name %>
+  <label for="inputEmail3" class="col-sm-2">
+    Product
+  </label>
+  <div class="col">
+    <%= form.collection_select :product_name,product_brand ,:to_s,:to_s,:include_blank => "Select a Product",class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :fault %>
-    <%= form.text_field :fault %>
+  <label for="inputEmail3" class="col-sm-2">
+    Fault
+  </label>
+  <div class="col">
+    <%= form.text_field :fault ,class: "form-control",placeholder: "Description of the Fault" %>
   </div>
 
-  <div class="field">
-    <%= form.label :complaint_status %>
-    <%= form.text_field :complaint_status %>
+  <label for="inputEmail3" class="col-sm-2">
+    Complaint Status
+  </label>
+  <div class="col">
+    <%= form.select :complaint_status,["pending","part_pending","resolved","halt"],class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :call_history %>
-    <%= form.text_field :call_history %>
+  <label for="inputEmail3" class="col-sm-2">
+    History
+  </label>
+  <div class="col">
+    <%= form.select :cal_history,["fresh","repeat"],class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :warranty %>
-    <%= form.text_field :warranty %>
+  <label for="inputEmail3" class="col-sm-2">
+    Warranty Status
+  </label>
+  <div class="col">
+    <%= form.select(:warranty,["out of warranty","within warranty"]) %>
   </div>
 
-  <div class="field">
-    <%= form.label :mechenic %>
-    <%= form.text_field :mechenic %>
+  <label for="inputEmail3" class="col-sm-2">
+    Mechenic
+  </label>
+  <div class="col">
+    <%= form.collection_select :mechenic, Mechenic.all,:mec_name,:mec_name,:include_blank => "Select a Mechenic",class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :site_address %>
-    <%= form.text_field :site_address %>
+  <label for="inputEmail3" class="col-sm-2">
+    Site Address
+  </label>
+  <div class="col">
+    <%= form.select(:site_address,["On conter","Coustomer address"]) %>
   </div>
 
-  <div class="field">
-    <%= form.label :coustomer_name %>
-    <%= form.text_field :coustomer_name %>
+  <label for="inputEmail3" class="col-sm-2">
+    Coustomer Name
+  </label>
+  <div class="col">
+    <%= form.text_field :coustomer_name,class: "form-control",placeholder: "Name of Coustomer",:required => true %>
   </div>
 
-  <div class="field">
-    <%= form.label :coustomer_address %>
-    <%= form.text_field :coustomer_address %>
+  <label for="inputEmail3" class="col-sm-2">
+    Address
+  </label>
+  <div class="col">
+    <%= form.text_field :coustomer_address,class: "form-control",placeholder: "Addressto be visited",:required => true %>
   </div>
 
-  <div class="field">
-    <%= form.label :coustomer_city %>
-    <%= form.text_field :coustomer_city %>
+  <label for="inputEmail3" class="col-sm-2">
+    City
+  </label>
+  <div class="col">
+    <%= form.text_field :coustomer_city,class:"form-control",placeholder:"City",required:true %>
   </div>
 
-  <div class="field">
-    <%= form.label :coustomer_phone %>
-    <%= form.text_field :coustomer_phone %>
+  <label for="inputEmail3" class="col-sm-2">
+    Contact
+  </label>
+  <div class="col">
+    <%= form.text_field :coustomer_phone,class:"form-control",placeholder:"10 digit coustomer's contact"%>
   </div>
 
-  <div class="field">
-    <%= form.label :product_sr_no %>
-    <%= form.text_field :product_sr_no %>
+  <label for="inputEmail3" class="col-sm-2">
+    Product Sr.no
+  </label>
+  <div class="col">
+    <%= form.text_field :product_sr_no,class:"form-control",required:true,placeholder:"The unique product_sr_no" %>
   </div>
 
-  <div class="field">
-    <%= form.label :purchase_date %>
-    <%= form.text_field :purchase_date %>
+  <label for="inputEmail3" class="col-sm-2">
+    Purchase Date
+  </label>
+  <div class="col">
+    <%= form.datetime_select :purchase_date %>
+  </div>
+  <br>
+
+  <% if (params[:controller]=='complaints'&& params[:action] == 'new')%>
+    <div class="col">
+      <%= form.submit "Rise a complaint ticket", class: 'btn btn-success'%>
+      <%= link_to 'Cancel', complaints_path,class: "btn btn-secondary"%>
+    </div>
+    <%else%>
+    <div class="col">
+      <%= form.submit "Update Complaint", class: 'btn btn-success'%>
+      <%= link_to 'Cancel', complaints_path,class: "btn btn-secondary"%>
+      <%= link_to 'Show Product', @complaint,class: "btn btn-secondary"%>
+
+    </div>
+    <%end%>
+
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+  <% end %>
