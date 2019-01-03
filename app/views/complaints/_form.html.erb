@@ -16,7 +16,7 @@
     Call Date
   </label>
   <div class="col">
-    <%= form.datetime_local_field :call_date ,class: "form-control" %>
+    <%= form.datetime_select :call_date ,class: "form-control" %>
   </div>
 
   <label for="inputEmail3" class="col-sm-2">
@@ -44,21 +44,21 @@
     Complaint Status
   </label>
   <div class="col">
-    <%= form.select :complaint_status,["pending","part_pending","resolved","halt"],class: "form-control" %>
+    <%= form.select :complaint_status,["pending","part_pending","resolved","halt"],:include_blank =>"Status",class: "form-control" %>
   </div>
 
   <label for="inputEmail3" class="col-sm-2">
     History
   </label>
   <div class="col">
-    <%= form.select :cal_history,["fresh","repeat"],class: "form-control" %>
+    <%= form.select :cal_history,["fresh","repeat"],:include_blank =>"History",class: "form-control" %>
   </div>
 
   <label for="inputEmail3" class="col-sm-2">
     Warranty Status
   </label>
   <div class="col">
-    <%= form.select(:warranty,["out of warranty","within warranty"]) %>
+    <%= form.select :warranty,["out of warranty","within warranty"],:include_blank =>"Warranty status" %>
   </div>
 
   <label for="inputEmail3" class="col-sm-2">
@@ -72,7 +72,7 @@
     Site Address
   </label>
   <div class="col">
-    <%= form.select(:site_address,["On conter","Coustomer address"]) %>
+    <%= form.select :site_address,["On counter","Coustomer address"],:include_blank => "Site Location" %>
   </div>
 
   <label for="inputEmail3" class="col-sm-2">

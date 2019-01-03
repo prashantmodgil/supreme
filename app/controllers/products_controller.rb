@@ -5,6 +5,14 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    search = params[:search]
+    if search
+        capital_search = search.capitalize
+        downcase_search = search.downcase
+        upcase_search = search.upcase
+        title_search = search.titleize
+        @products = Product.where("name like? OR name like? OR name like? OR name like?","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%")
+    end
   end
 
   # GET /products/1

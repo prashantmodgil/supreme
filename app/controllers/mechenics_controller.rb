@@ -5,6 +5,14 @@ class MechenicsController < ApplicationController
   # GET /mechenics.json
   def index
     @mechenics = Mechenic.all
+    search = params[:search]
+    if search
+        capital_search = search.capitalize
+        downcase_search = search.downcase
+        upcase_search = search.upcase
+        title_search = search.titleize
+        @mechenics = Mechenic.where("mec_name like? OR mec_name like? OR mec_name like? OR mec_name like?","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%")
+    end
   end
 
   # GET /mechenics/1

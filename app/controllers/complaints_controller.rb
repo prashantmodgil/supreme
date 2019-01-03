@@ -5,6 +5,14 @@ class ComplaintsController < ApplicationController
   # GET /complaints.json
   def index
     @complaints = Complaint.all
+    search =params[:search]
+    if search
+        capital_search = search.capitalize
+        downcase_search = search.downcase
+        upcase_search = search.upcase
+        title_search = search.titleize
+        @complaints = Complaint.where("mechenic like? OR mechenic like? OR mechenic like? OR mechenic like? OR product_sr_no like? OR product_sr_no like? OR product_sr_no like? OR product_sr_no like? OR dealer like? OR dealer like? OR dealer like? OR dealer like?","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%")
+    end
   end
 
   # GET /complaints/1
