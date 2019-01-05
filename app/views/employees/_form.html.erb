@@ -1,0 +1,48 @@
+<%= form_with(model: employee, local: true) do |form| %>
+  <% if employee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+
+      <ul>
+      <% employee.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2">
+      Employee Name
+    </label>
+    <div class="col">
+      <%= form.text_field :name,class:"form-control",placeholder:"Employee's name" %>
+    </div>
+
+    <label for="inputEmail3" class="col-sm-2">
+      Primary Mobile Number
+    </label>
+    <div class="col">
+      <%= form.text_field :contact,class:"form-control",placeholder:"10 digits" %>
+    </div>
+
+    <label for="inputEmail3" class="col-sm-2">
+      Address
+    </label>
+    <div class="col">
+      <%= form.text_field :address,class:"form-control",placeholder:"Complete Address" %>
+    </div>
+
+    <% if (params[:controller]=='employees'&& params[:action] == 'new')%>
+      <div class="col">
+        <%= form.submit "Create Employee", class: 'btn btn-success'%>
+        <%= link_to 'Cancel', employees_path,class: "btn btn-secondary"%>
+      </div>
+      <%else%>
+      <div class="col">
+        <%= form.submit "Update Employee", class: 'btn btn-success'%>
+        <%= link_to 'Cancel',employees_path,class: "btn btn-secondary"%>
+        <%= link_to 'Employee Details', @employee,class: "btn btn-secondary"%>
+      </div>
+      <%end%>
+  <% end %>

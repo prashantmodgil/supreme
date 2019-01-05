@@ -1,5 +1,6 @@
 class Complaint < ApplicationRecord
   validates :mechenic,presence: true
+  validates :createdby,presence: true
   validates :dealer,presence: true
   validates :product_name,presence: true
   validates :complaint_status,presence: true

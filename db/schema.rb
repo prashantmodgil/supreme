@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_24_081514) do
+ActiveRecord::Schema.define(version: 2019_01_05_085033) do
 
   create_table "brands", force: :cascade do |t|
     t.string "brand_name"
@@ -36,12 +36,21 @@ ActiveRecord::Schema.define(version: 2018_12_24_081514) do
     t.datetime "purchase_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "createdby"
   end
 
   create_table "dealers", force: :cascade do |t|
     t.string "dealer_name"
     t.string "dealer_contact"
     t.string "dealer_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "name"
+    t.string "contact"
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,7 +64,6 @@ ActiveRecord::Schema.define(version: 2018_12_24_081514) do
     t.string "district"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["mec_name"], name: "index_mechenics_on_mec_name", unique: true
   end
 
   create_table "products", force: :cascade do |t|

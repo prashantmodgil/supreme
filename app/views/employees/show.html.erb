@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container-fluid col-sm-2">
+  <div class="card bg-primary text-white container-fluid">
+      <div class="card-body text-center">
+        <strong >Employee Details </strong>
+        <%= @employee.name%>
+        <%= @employee.contact%>
+        <%= @employee.address%>
+      </div>
+  </div>
+
+
+<%= link_to 'Edit', edit_employee_path(@employee),class: "btn btn-secondary" %> 
+<%= link_to 'Back', employees_path,class: "btn btn-secondary" %>

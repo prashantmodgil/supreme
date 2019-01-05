@@ -37,8 +37,9 @@
     Fault
   </label>
   <div class="col">
-    <%= form.text_field :fault ,class: "form-control",placeholder: "Description of the Fault" %>
+    <%= form.text_field :fault ,class: "form-control",placeholder: "fault",:required => true %>
   </div>
+
 
   <label for="inputEmail3" class="col-sm-2">
     Complaint Status
@@ -51,7 +52,7 @@
     History
   </label>
   <div class="col">
-    <%= form.select :cal_history,["fresh","repeat"],:include_blank =>"History",class: "form-control" %>
+    <%= form.select :call_history,["fresh","repeat"],:include_blank =>"History",class: "form-control" %>
   </div>
 
   <label for="inputEmail3" class="col-sm-2">
@@ -117,6 +118,13 @@
     <%= form.datetime_select :purchase_date %>
   </div>
   <br>
+
+  <label for="inputEmail3" class="col-sm-2">
+    Complaint Created by
+  </label>
+  <div class="col">
+    <%= form.collection_select :createdby, Employee.all,:name,:name,:include_blank => "Select a Employee",class: "form-control" %>
+  </div>
 
   <% if (params[:controller]=='complaints'&& params[:action] == 'new')%>
     <div class="col">

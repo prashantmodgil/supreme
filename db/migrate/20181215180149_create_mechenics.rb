@@ -10,6 +10,5 @@ class CreateMechenics < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_index :mechenics, :mec_name, unique: true
   end
 end
