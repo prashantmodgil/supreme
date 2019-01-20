@@ -11,30 +11,34 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2">
+  <div class="feild">
+    <label class="label">
       Product Name
     </label>
-    <div class="col">
-      <%= form.text_field :name,:required => true,class: "form-control",placeholder: "Add a new Product"  %>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.text_field :name,:required => true,class: "input is-success",placeholder: "Add a new Product"  %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-tv"></i>
+      </span>
     </div>
-    <br>
-    <label for="inputEmail3" class="col-sm-2">
+    <label class="label">
       Brand
     </label>
-    <%= form.collection_select :brand, Brand.all,:brand_name,:brand_name,:include_blank => "Select a Brand",class: "form-control" %>
-
-
+    <div class="control select is-success">
+      <%= form.collection_select :brand, Brand.all,:brand_name,:brand_name,:include_blank => "Select a Brand" %>
+    </div>
+    <br>
+    <br>
     <% if (params[:controller]=='products'&& params[:action] == 'new')%>
       <div class="col">
-        <%= form.submit "Create Product", class: 'btn btn-success'%>
-        <%= link_to 'Cancel', products_path,class: "btn btn-secondary"%>
+        <%= form.submit "Create Product", class: 'button is-success'%>
+        <%= link_to 'Cancel', products_path,class: "button is-danger"%>
       </div>
       <%else%>
       <div class="col">
-        <%= form.submit "Update Product", class: 'btn btn-success'%>
-        <%= link_to 'Cancel', products_path,class: "btn btn-secondary"%>
-        <%= link_to 'Show Product', @product,class: "btn btn-secondary"%>
+        <%= form.submit "Update Product", class: 'button is-success'%>
+        <%= link_to 'Cancel', products_path,class: "button is-danger"%>
+        <%= link_to 'Show Product', @product,class: "button is-danger"%>
 
       </div>
       <%end%>

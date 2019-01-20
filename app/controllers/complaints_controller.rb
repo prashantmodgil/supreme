@@ -4,7 +4,8 @@ class ComplaintsController < ApplicationController
   # GET /complaints
   # GET /complaints.json
   def index
-    @complaints = Complaint.all
+    @complaints = Complaint.all.page(params[:page])
+
     search =params[:search]
     if search
         capital_search = search.capitalize
@@ -37,6 +38,7 @@ class ComplaintsController < ApplicationController
     respond_to do |format|
       if @complaint.save
         format.html { redirect_to @complaint, notice: 'Complaint was successfully created.' }
+        # ComplaintMailer.with(user: @complaint).send_email.deliver_now
         format.json { render :show, status: :created, location: @complaint }
       else
         format.html { render :new }

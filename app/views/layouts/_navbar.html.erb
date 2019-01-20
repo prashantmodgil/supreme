@@ -1,23 +1,21 @@
-<div class="container-fluid">
-	<div class="row">
-			<div class="col-md-12">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
-					</button> <a class="navbar-brand" href="<%=complaints_path%>">Complaints</a>
-					</button> <a class="navbar-brand" href="<%=products_path%>">Products</a>
-					</button> <a class="navbar-brand" href="<%=brands_path%>">Brands</a>
-					</button> <a class="navbar-brand" href="<%=mechenics_path%>">Mechenics</a>
-					</button> <a class="navbar-brand" href="<%=dealers_path%>">Dealers</a>
-					</button> <a class="navbar-brand" href="<%=employees_path%>">Employes</a>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <!-- <a class="navbar-item" href="https://bulma.io">
+      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+    </a> -->
 
-					<form class="form-inline">
-						<%= form_tag complaints_path, :method => 'get',class:"navbar-form mavbar-left" do %>
-	          <div class="form-group">
-	          	<%= text_field_tag :search, params[:search],class:"form-control" %>
-	          </div>
-	          	<%= submit_tag "Search",:name=>nil,class:"btn btn-default"%>
-	          <%end%>
-					</form>
-			</nav>
+    <h1 class = "navbar-item" style="color:orange">Superme Enterprise</h1>
+
+  </div>
+  <div class="navbar-end">
+    <div class="navbar-item">
+      <div class="field has-addons">
+
+      <%= form_tag complaints_path, :method => 'get',class:"navbar-end navbar-item" do %>
+  		     	<%= text_field_tag :search, params[:search],class:"control input is-success" %>
+  	       	<%= submit_tag "Search",:name=>nil,class:"controll button is-success"%>
+  	      <%end%>
+  		</form>
     </div>
   </div>
-</div>
+</nav>

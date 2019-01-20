@@ -11,38 +11,48 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2">
+  <div class="feild">
+    <label class="label">
       DealerName
     </label>
-    <div class="col">
-      <%= form.text_field :dealer_name, class: "form-control",placeholder: "Enter dealer's name" %>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.text_field :dealer_name, class: "input is-success",placeholder: "Enter dealer's name" %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-address-card" aria-hidden="true"></i>
+      </span>
     </div>
 
-    <label for="inputEmail3"class="col-sm-2">
+    <label class="label">
       Contact
     </label>
-    <div class="col">
-      <%= form.text_field :dealer_contact, class: "form-control",placeholder: "10 digit contact number"%>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.text_field :dealer_contact, class: "input is-success",placeholder: "10 digit contact number"%>
+      <span class="icon is-small is-left">
+        <i class="fa fa-mobile"></i>
+      </span>
     </div>
 
-    <label for="inputEmail3"class="col-sm-2">
+    <label class="label">
       Dealer's Adresss
     </label>
-    <div class="col">
-      <%= form.text_field :dealer_address,class: "form-control",placeholder:"Dealer's Adress" %>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.text_field :dealer_address,class: "input is-success",placeholder:"Dealer's Adress" %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-map-marker" aria-hidden="true"></i>
+      </span>
     </div>
-
+    <br>
     <% if (params[:controller]=='dealers'&& params[:action] == 'new')%>
       <div class="col">
-        <%= form.submit "Create Dealer", class: 'btn btn-success'%>
-        <%= link_to 'Cancel', dealers_path,class: "btn btn-secondary"%>
+        <%= form.submit "Create Dealer", class: 'button is-success'%>
+        <%= link_to 'Cancel', dealers_path,class: "button is-danger"%>
       </div>
-      <%else%>
+    <%else%>
       <div class="col">
-        <%= form.submit "Update Dealer", class: 'btn btn-success'%>
-        <%= link_to 'Cancel', dealers_path,class: "btn btn-secondary"%>
-        <%= link_to 'Dealer Details', @dealer,class: "btn btn-secondary"%>
+        <%= form.submit "Update Dealer", class: 'button is-success'%>
+        <%= link_to 'Cancel', dealers_path,class: "button is-danger"%>
+        <%= link_to 'Dealer Details', @dealer,class: "button is-danger"%>
       </div>
-      <%end%>
+    <%end%>
+  </div>
 <% end %>

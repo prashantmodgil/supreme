@@ -12,4 +12,6 @@ class Complaint < ApplicationRecord
   validates :product_sr_no,presence: true
   validates :coustomer_phone, format: { with: /\d{10}/,
     message: "only allows 10 digits" }
+  self.per_page = 10
+
 end

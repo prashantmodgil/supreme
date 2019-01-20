@@ -1,11 +1,8 @@
-<p id="notice"><%= notice %></p>
 <div class="container-fluid">
-<h1>Employees</h1>
-
-<table class="table table-dark table-hover">
+<table class="table is-hoverable is-narrow is-fullwidth">
   <thead>
     <tr>
-      <th> Employee Name</th>
+      <th>Employee Name</th>
       <th>Contact</th>
     </tr>
   </thead>
@@ -14,12 +11,13 @@
     <% @employees.each do |employee| %>
       <tr>
         <td><%= employee.name %></td>
-        <td><%= employee.contact %></td>
-        <td>
+        <td><%= employee.contact %>
         <div style="float:right" >
-        <%= link_to 'Show', employee %>
-        <%= link_to 'Edit', edit_employee_path(employee) %>
-        <%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <a href="<%=employee_path(employee)%>"><i class="fa fa-eye" aria-hidden="true" title="Show"></i></a>
+          <a href="<%=edit_employee_path(employee)%>"><i class="fa fa-pencil" aria-hidden="true" title="Edit"></i></a>
+          <%= link_to employee_path(employee), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-trash-o"></i>
+          <% end %>
         </div>
         </td>
       </tr>
@@ -29,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Employee', new_employee_path, class: "btn btn-secondary"%>
+<%= link_to 'New Employee', new_employee_path, class: "button is-danger"%>

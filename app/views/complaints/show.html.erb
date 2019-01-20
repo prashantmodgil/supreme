@@ -1,52 +1,30 @@
-<p id="notice"><%= notice %></p>
-
 <div class="container-fluid">
-<table class="table table-dark table-hover">
-  <thead>
-    <tr>
-      <th>Call UID</th>
-      <th>Call date</th>
-      <th>Dealer</th>
-      <th>Product name</th>
-      <th>Fault</th>
-      <th>Complaint status</th>
-      <th>Call history</th>
-      <th>Warranty</th>
-      <th>Mechenic</th>
-      <th>site_address</th>
-      <th>Coustomer Name</th>
-      <th>Coustomer Address</th>
-      <th>Coustomer City</th>
-      <th>coustomer Phone</th>
-      <th>Sr.number</th>
-      <th>Purchased on</th>
-
-    </tr>
-  </thead>
-
-  <tbody>
-      <tr>
-        <td><%= @complaint.id %></td>
-        <td><%= @complaint.call_date %></td>
-        <td><%= @complaint.dealer %></td>
-        <td><%= @complaint.product_name %></td>
-        <td><%= @complaint.fault %></td>
-        <td><%= @complaint.complaint_status %></td>
-        <td><%= @complaint.call_history %></td>
-        <td><%= @complaint.warranty %></td>
-        <td><%= @complaint.mechenic %></td>
-        <td><%= @complaint.site_address %></td>
-        <td><%= @complaint.coustomer_name %></td>
-        <td><%= @complaint.coustomer_address %></td>
-        <td><%= @complaint.coustomer_city %></td>
-        <td><%= @complaint.coustomer_phone %></td>
-        <td><%= @complaint.product_sr_no %></td>
-        <td><%= @complaint.purchase_date %></td>
-        <td>
-        <div style="float:right">
-          <%= link_to 'Edit', edit_complaint_path(@complaint) %>
-          <%= link_to 'Back', complaints_path %>
-      </tr>
-  </tbody>
-</table>
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Complaint UID:<%= @complaint.id %>
+    </p>
+    <p class="card-header-title">Call Date<%= @complaint.call_date %></p>
+    <p class="card-header-title">Coustomer:<%= @complaint.coustomer_name %></p>
+  </header>
+  <div class="card-content">
+      Fault: <%= @complaint.fault%><br>
+      Dealer:<%= @complaint.dealer %><br>
+      product:<%= @complaint.product_name %><br>
+      Status:<%= @complaint.complaint_status %><br>
+      History:<%= @complaint.call_history %><br>
+      Warrenty status:<%= @complaint.warranty %><br>
+      mechenic:<%= @complaint.mechenic %><br>
+      Site:<%= @complaint.site_address %><br>
+      Coustomer Address:<%= @complaint.coustomer_address %><br>
+      Coustomer city:<%= @complaint.coustomer_city %><br>
+      Coustomer Phone:<%= @complaint.coustomer_phone %><br>
+      Product Sr.Number:<%= @complaint.product_sr_no %><br>
+      Purched on:<%= @complaint.purchase_date %><br>
+    </div>
+  <footer class="card-footer">
+    <a  href="<%=complaint_path(@complaint)%>" class="card-footer-item ">Edit</a>
+    <a  href="<%=complaint_path%>" class="card-footer-item ">Back</a>
+    <span class="card-footer-item">Created  By: <%=@complaint.createdby%></span>
+  </footer>
 </div>

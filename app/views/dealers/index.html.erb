@@ -1,11 +1,7 @@
-<p id="notice"><%= notice %></p>
 <div class="container-fluid">
-<h1>Dealers</h1>
-
-<table class="table table-dark table-hover">
+<table class="table is-hoverable is-narrow is-fullwidth">
   <thead>
     <tr>
-      <th>Dealer UID</th>
       <th>Dealer name</th>
       <th>Dealer contact</th>
       <th>Dealer address</th>
@@ -15,15 +11,15 @@
   <tbody>
     <% @dealers.each do |dealer| %>
       <tr>
-        <td><%= dealer.id %></td>
         <td><%= dealer.dealer_name %></td>
         <td><%= dealer.dealer_contact %></td>
-        <td><%= dealer.dealer_address %></td>
-        <td>
+        <td><%= dealer.dealer_address %>
         <div style="float:right" >
-        <%= link_to 'Show', dealer_path(dealer),style: "text-white"%>
-        <%= link_to 'Edit', edit_dealer_path(dealer) %>
-        <%= link_to 'Delete', dealer, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <a href="<%=dealer_path(dealer)%>"><i class="fa fa-eye" aria-hidden="true" title="Show"></i></a>
+        <a href="<%=edit_dealer_path(dealer)%>"><i class="fa fa-pencil" aria-hidden="true" title="Edit"></i></a>
+        <%= link_to dealer_path(dealer), method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="fa fa-trash-o"></i>
+        <% end %>
         </div>
       </td>
       </tr>
@@ -33,5 +29,5 @@
 
 <br>
 
-<%= link_to 'New Dealer', new_dealer_path,class: "btn btn-secondary" %>
+<%= link_to 'New Dealer', new_dealer_path,class: "button is-danger" %>
 </div>

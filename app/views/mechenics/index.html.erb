@@ -1,8 +1,5 @@
-<p id="notice"><%= notice %></p>
 <div class="container-fluid">
-<h1>Mechenics</h1>
-
-<table class="table table-dark table-hover">
+<table class="table is-hoverable is-narrow is-fullwidth">
   <thead>
     <tr>
       <th>Mec name</th>
@@ -18,12 +15,13 @@
         <td><%= mechenic.mec_name %></td>
         <td><%= mechenic.mobile_num_1 %></td>
         <td><%= mechenic.mobile_num2 %></td>
-        <td><%= mechenic.district %></td>
-        <td>
+        <td><%= mechenic.district %>
         <div style="float:right" >
-        <%= link_to 'Show', mechenic %>
-        <%= link_to 'Edit', edit_mechenic_path(mechenic) %>
-        <%= link_to 'Destroy', mechenic, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <a href="<%=mechenic_path(mechenic)%>"><i class="fa fa-eye" aria-hidden="true" title="Show"></i></a>
+          <a href="<%=mechenic_path(mechenic)%>"><i class="fa fa-pencil" aria-hidden="true" title="Edit"></i></a>
+          <%= link_to mechenic_path(mechenic), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-trash-o" title="Delete"></i>
+          <% end %>
         </div>
         </td>
       </tr>
@@ -33,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Mechenic', new_mechenic_path,class: "btn btn-secondary" %>
+<%= link_to 'New Mechenic', new_mechenic_path,class: "button is-danger" %>

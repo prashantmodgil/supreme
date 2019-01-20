@@ -11,38 +11,50 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2">
+  <div class="feild">
+    <label class="label">
       Employee Name
     </label>
-    <div class="col">
-      <%= form.text_field :name,class:"form-control",placeholder:"Employee's name" %>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.text_field :name,class:"input is-success",placeholder:"Employee's name" %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-user-plus"></i>
+      </span>
     </div>
 
-    <label for="inputEmail3" class="col-sm-2">
+    <label class="label">
       Primary Mobile Number
     </label>
-    <div class="col">
-      <%= form.text_field :contact,class:"form-control",placeholder:"10 digits" %>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.text_field :contact,class:"input is-success",placeholder:"10 digits" %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-mobile"></i>
+      </span>
     </div>
 
-    <label for="inputEmail3" class="col-sm-2">
+    <label class="label">
       Address
     </label>
-    <div class="col">
-      <%= form.text_field :address,class:"form-control",placeholder:"Complete Address" %>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.text_field :address,class:"input is-success",placeholder:"Complete Address" %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-location-arrow" aria-hidden="true"></i>
+
+      </span>
     </div>
+
+    <br>
 
     <% if (params[:controller]=='employees'&& params[:action] == 'new')%>
       <div class="col">
-        <%= form.submit "Create Employee", class: 'btn btn-success'%>
-        <%= link_to 'Cancel', employees_path,class: "btn btn-secondary"%>
+        <%= form.submit "Create Employee", class: 'button is-success'%>
+        <%= link_to 'Cancel', employees_path,class: "button is-danger"%>
       </div>
       <%else%>
       <div class="col">
-        <%= form.submit "Update Employee", class: 'btn btn-success'%>
-        <%= link_to 'Cancel',employees_path,class: "btn btn-secondary"%>
-        <%= link_to 'Employee Details', @employee,class: "btn btn-secondary"%>
+        <%= form.submit "Update Employee", class: 'button is-success'%>
+        <%= link_to 'Cancel',employees_path,class: "button is-danger"%>
+        <%= link_to 'Employee Details', @employee,class: "button is-danger"%>
       </div>
       <%end%>
   <% end %>
