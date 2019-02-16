@@ -2,7 +2,6 @@
   <% if complaint.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(complaint.errors.count, "error") %> prohibited this complaint from being saved:</h2>
-
       <ul>
       <% complaint.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -25,7 +24,7 @@
     <label class="label">
       Dealer
     </label>
-    <div class="control select is-success">
+    <div class="control select is-success" id="dropdowntype">
       <%= form.collection_select :dealer, Dealer.all,:dealer_name,:dealer_name,:include_blank => "Select a Dealer" %>
     </div>
 
@@ -69,10 +68,10 @@
   </div>
 
   <label class="label">
-    Mechenic
+    Mechanic
   </label>
   <div class="control select is-success">
-    <%= form.collection_select :mechenic, Mechenic.all,:mec_name,:mec_name,:include_blank => "Select a Mechenic"%>
+    <%= form.collection_select :mechenic, Mechenic.all,:mec_name,:mec_name,:include_blank => "Select a Mechanic"%>
   </div>
 
   <label class="label">
@@ -80,6 +79,13 @@
   </label>
   <div class="control select is-success">
     <%= form.select :site_address,["On counter","Coustomer address"],:include_blank => "Site Location" %>
+  </div>
+
+  <label class="label">
+    In Stock
+  </label>
+  <div class="control select is-success">
+    <%= form.select :instock,["Instock","Onsite"],:include_blank => "Stock Location" %>
   </div>
 
   <label class="label">
@@ -127,7 +133,7 @@
     Product Sr.no
   </label>
   <div class="control has-icons-left has-icons-right">
-    <%= form.text_field :product_sr_no,class:"input is-success",required:true,placeholder:"The unique product_sr_no" %>
+    <%= form.text_field :product_sr_no,class:"input is-success",placeholder:"The unique product_sr_no" %>
     <span class="icon is-small is-left">
       <i class="fa fa-qrcode" aria-hidden="true"></i>
     </span>
@@ -142,8 +148,15 @@
       <i class="fa fa-calendar"></i>
     </span>
   </div>
-  <br>
-
+  <label class="label">
+    Closing Date
+  </label>
+  <div class="control has-icons-left has-icons-right">
+    <%= form.datetime_local_field :close_date,class: "input is-success" %>
+    <span class="icon is-small is-left">
+      <i class="fa fa-calendar"></i>
+    </span>
+  </div>
   <label class="label">
     Complaint Created by
   </label>
@@ -156,15 +169,14 @@
       <%= form.submit "Rise a complaint ticket", class: 'button is-success'%>
       <%= link_to 'Cancel', complaints_path,class: "button is-danger"%>
     </div>
-    <%else%>
+  <%else%>
     <div class="col">
       <%= form.submit "Update Complaint", class: 'button is-success'%>
       <%= link_to 'Cancel', complaints_path,class: "button is-danger"%>
       <%= link_to 'Show Product', @complaint,class: "button is-info"%>
-
     </div>
-    <%end%>
-
-  </div>
-
-  <% end %>
+  <%end%>
+<%end%>
+  <script>
+    $("#dropdowntype").select2({allowClear: true})
+  </script>

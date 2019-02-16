@@ -11,7 +11,7 @@ class DealersController < ApplicationController
         downcase_search = search.downcase
         upcase_search = search.upcase
         title_search = search.titleize
-        @dealers = Dealer.where("name like? OR name like? OR name like? OR name like?","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%")
+        @dealers = Dealer.where("dealer_name like? OR dealer_name like? OR dealer_name like? OR dealer_name like?","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%").page(params[:page])
     end
   end
 

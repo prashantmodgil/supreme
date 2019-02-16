@@ -1,9 +1,8 @@
 class ComplaintMailer < ApplicationMailer
   default from: 'notifications@example.com'
   def send_email
-    byebug
-    @compalint = params[:user]
-    @url  = 'http://example.com/login'
-    mail(to: @compalint.mechenic, subject: 'Welcome to My Awesome Site')
+    @compalint = Complaint.where(id: params[:complaint][:id]).first
+    @mechenic = Mechenic.where(mec_name: @compalint.mechenic).first
+    mail(to: @mechenic.email, subject: @compalint.fault)
   end
 end

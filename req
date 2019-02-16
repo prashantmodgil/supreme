@@ -10,3 +10,6 @@ srno not needed
 
 creatre dealer
 name,contact,address,searc name based
+add
+close date,instock boolean (agar instock mei hai there is no need of purchase date)
+search query on the basis of dates installation

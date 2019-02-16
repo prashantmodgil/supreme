@@ -13,7 +13,7 @@
 
   <div class="feild">
     <label class="label">
-      Mechenic Name
+      Mechanics Name
     </label>
     <div class="control has-icons-left has-icons-right">
       <%= form.text_field :mec_name,class:"input is-success",placeholder:"Mechenic's name" %>
@@ -42,6 +42,15 @@
       </span>
     </div>
 
+    <label class="label">
+      Email
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.text_field :email,class:"input is-success",placeholder:"email@example.com" %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-envelope"></i>
+      </span>
+    </div>
 
     <label class="label">
       Address
@@ -50,7 +59,6 @@
       <%= form.text_field :address,class:"input is-success",placeholder:"Complete Address" %>
       <span class="icon is-small is-left">
         <i class="fa fa-location-arrow" aria-hidden="true"></i>
-
       </span>
     </div>
 
@@ -61,20 +69,20 @@
     <%= form.text_field :district,class:"input is-success",placeholder:"District Name" %>
     <span class="icon is-small is-left">
       <i class="fa fa-map-marker"></i>
-
     </span>
   </div>
+
 <br>
   <% if (params[:controller]=='mechenics'&& params[:action] == 'new')%>
     <div class="col">
-      <%= form.submit "Create Mechenic", class: 'button is-success'%>
+      <%= form.submit "Create Mechanic", class: 'button is-success'%>
       <%= link_to 'Cancel', mechenics_path,class: "button is-danger"%>
     </div>
     <%else%>
     <div class="col">
-      <%= form.submit "Update Mechenic", class: 'button is-success'%>
+      <%= form.submit "Update Mechanic", class: 'button is-success'%>
       <%= link_to 'Cancel',mechenics_path,class: "button is-danger"%>
-      <%= link_to 'Mechenic Details', @mechenic,class: "button is-danger"%>
+      <%= link_to 'Mechanic Details', @mechenic,class: "button is-danger"%>
     </div>
-    <%end%>
+  <%end%>
 <% end %>

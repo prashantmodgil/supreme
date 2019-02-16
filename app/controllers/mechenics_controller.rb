@@ -11,7 +11,7 @@ class MechenicsController < ApplicationController
         downcase_search = search.downcase
         upcase_search = search.upcase
         title_search = search.titleize
-        @mechenics = Mechenic.where("mec_name like? OR mec_name like? OR mec_name like? OR mec_name like?","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%")
+        @mechenics = Mechenic.where("mec_name like? OR mec_name like? OR mec_name like? OR mec_name like?","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%").page(params[:page])
     end
   end
 

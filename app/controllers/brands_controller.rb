@@ -11,7 +11,7 @@ class BrandsController < ApplicationController
         downcase_search = search.downcase
         upcase_search = search.upcase
         title_search = search.titleize
-        @brands = Brand.where("brand_name like? OR brand_name like? OR brand_name like? OR brand_name like?","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%")
+        @brands = Brand.where("brand_name like? OR brand_name like? OR brand_name like? OR brand_name like?","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%").page(params[:page])
     end
   end
 

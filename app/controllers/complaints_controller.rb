@@ -5,14 +5,13 @@ class ComplaintsController < ApplicationController
   # GET /complaints.json
   def index
     @complaints = Complaint.all.page(params[:page])
-
     search =params[:search]
     if search
         capital_search = search.capitalize
         downcase_search = search.downcase
         upcase_search = search.upcase
         title_search = search.titleize
-        @complaints = Complaint.where("mechenic like? OR mechenic like? OR mechenic like? OR mechenic like? OR product_sr_no like? OR product_sr_no like? OR product_sr_no like? OR product_sr_no like? OR dealer like? OR dealer like? OR dealer like? OR dealer like?","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%")
+        @complaints = Complaint.where("mechenic like? OR mechenic like? OR mechenic like? OR mechenic like? OR product_sr_no like? OR product_sr_no like? OR product_sr_no like? OR product_sr_no like? OR dealer like? OR dealer like? OR dealer like? OR dealer like?","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%").page(params[:page])
     end
   end
 
@@ -38,8 +37,8 @@ class ComplaintsController < ApplicationController
     respond_to do |format|
       if @complaint.save
         format.html { redirect_to @complaint, notice: 'Complaint was successfully created.' }
-        # ComplaintMailer.with(user: @complaint).send_email.deliver_now
         format.json { render :show, status: :created, location: @complaint }
+      #ComplaintMailer.with(complaint: @complaint).send_email.deliver_now
       else
         format.html { render :new }
         format.json { render json: @complaint.errors, status: :unprocessable_entity }
@@ -59,6 +58,14 @@ class ComplaintsController < ApplicationController
         format.json { render json: @complaint.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def reports
+    @mechenics = Mechenic.all.pluck("mec_name")
+    @employees = Employes.all.pluck("name")
+    @total_complaints = Complaints where
+    byebug
+
   end
 
   # DELETE /complaints/1
