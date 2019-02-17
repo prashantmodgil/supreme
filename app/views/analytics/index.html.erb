@@ -1,0 +1,97 @@
+<section class="hero is-info welcome is-small">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                This is your Report card.
+            </h1>
+            <h2 class="subtitle">
+                I hope you are having a greate day!!!
+            </h2>
+        </div>
+    </div>
+</section>
+<br>
+<section class="info-tiles">
+  <div class="tile is-ancestor has-text-centered">
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <p class="title"><%= total_complaints %></p>
+        <p class="subtitle">Complaints in past 30 days</p>
+      </article>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+          <p class="title"><%=resolved_complaints%></p>
+          <p class="subtitle">Resolved complaints in past 30 days</p>
+      </article>
+    </div>
+    <div class="tile is-parent">
+        <article class="tile is-child box">
+            <p class="title"><%=pending_complaints%></p>
+            <p class="subtitle">Total pending complaints</p>
+        </article>
+    </div>
+  </div>
+</section>
+<div class="columns">
+  <div class="column is-6">
+    <div class="card events-card">
+      <header class="card-header">
+        <p class="card-header-title">
+          Mechanic Board
+        </p>
+      </header>
+      <div class="card-table">
+        <div class="content">
+          <table class="table is-fullwidth is-striped">
+            <tbody>
+              <th>name</th>
+              <th>total</th>
+              <th>solved</th>
+              <th>pending</th>
+              <%all_mechname.each do |name|%>
+              <tr>
+                <!-- <td width="5%"><i class="fa fa-bell-o"></i></td> -->
+                  <td><%=name%></td>
+                  <td><%=mec_30 (name)%></td>
+                  <td><%=mec_solved_30 (name)%></td>
+                  <td><%=name_pending_total (name)%></td>
+                <!-- <td><a class="button is-small is-primary" href="#">Action</a></td> -->
+              </tr>
+              <%end%>
+        </tbody>
+    </table>
+  </div>
+</div>
+<!-- <footer class="card-footer">
+    <a href="#" class="card-footer-item">View All</a>
+</footer> -->
+</div>
+</div>
+<div class="column is-6">
+  <div class="card">
+    <header class="card-header">
+      <p class="card-header-title">
+        Complaint search
+      </p>
+    </header>
+      <%= form_tag complaints_path, :method => 'get',class:"navbar-end navbar-item" do %>
+        <%= text_field_tag :search, params[:search],class:"control input is-success" %>
+        <%= submit_tag "Search",:name=>nil,class:"controll button is-success"%>
+      <%end%>
+      </form>
+    </div>
+  <div class="card">
+    <header class="card-header">
+      <p class="card-header-title">
+        Complaint search
+      </p>
+    </header>
+      <%= form_tag complaints_path, :method => 'get',class:"navbar-end navbar-item" do %>
+        <%= text_field_tag :search, params[:search],class:"control input is-success" %>
+        <%= submit_tag "Search",:name=>nil,class:"controll button is-success"%>
+      <%end%>
+      </form>
+    </div>
+  </div>
+</div>

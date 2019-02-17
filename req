@@ -13,3 +13,53 @@ name,contact,address,searc name based
 add
 close date,instock boolean (agar instock mei hai there is no need of purchase date)
 search query on the basis of dates installation
+
+total past 30 days  mei comleted pending
+
+
+<section class="info-tiles">
+  <div class="tile is-ancestor has-text-centered">
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <%=  form_tag(complaints_path method: :get) do %>
+        <div class="feild">
+          <label class="label">
+            Start Date
+          </label>
+          <div class="control has-icons-left has-icons-right input is-success !imporatant">
+            <%= datetime_local_field_tag :start_date %>
+            <span class="icon is-small is-left">
+              <i class="fa fa-calendar"></i>
+            </span>
+          </div>
+        </div>
+        <div class="feild">
+          <label class="label">
+            Stop Date
+          </label>
+          <div class="control has-icons-left has-icons-right input is-success">
+            <%= datetime_local_field_tag :stop_date %>
+            <span class="icon is-small is-left">
+              <i class="fa fa-calendar"></i>
+            </span>
+          </div>
+        </div>
+        <label class="label">
+          Dealer
+        </label>
+        <div class="control select is-success" id="dropdowntype">
+          <%= collection_select :dealer_search, Dealer.all,:dealer_name,:dealer_name,:include_blank => "Select a Dealer" %>
+        </div>
+        <%= submit_tag "Search", class: 'button is-success'%>
+        <%end%>
+      </article>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+          <p class="title"><%=resolved_complaints%></p>
+          <p class="subtitle">Resolved complaints in past 30 days</p>
+      </article>
+    </div>
+
+  </div>
+</section>

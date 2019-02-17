@@ -1,9 +1,9 @@
 module ComplaintsHelper
 
   def product_brand
-     a=Array.new
+    a=Array.new
     Product.all.each do |product|
-    a << "#{product.name}-#{product.brand}"
+      a << "#{product.name}-#{product.brand}"
     end
     return a
   end
