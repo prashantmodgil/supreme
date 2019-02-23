@@ -5,6 +5,19 @@ class ComplaintsController < ApplicationController
   # GET /complaints.json
   def index
     @complaints = Complaint.all.page(params[:page])
+
+    if params[:start_date].present? && params[:stop_date].present? && params[:dealer_search][:dealer_name].present?
+      start_date = params[:start_date].to_datetime
+      stop_date = params[:stop_date].to_datetime
+      @complaints = Complaint.where(created_at: start_date..stop_date).where(dealer: params[:dealer_search][:dealer_name]).page(params[:page])
+    end
+
+    if params[:start_date].present? && params[:stop_date].present? && params[:mechenic_search][:mec_name].present?
+      start_date = params[:start_date].to_datetime
+      stop_date = params[:stop_date].to_datetime
+      @complaints = Complaint.where(created_at: start_date..stop_date).where(dealer: params[:mechenic_search][:mec_name]).page(params[:page])
+    end
+
     search =params[:search]
     if search
         capital_search = search.capitalize
@@ -78,6 +91,6 @@ class ComplaintsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def complaint_params
-      params.require(:complaint).permit(:call_date, :dealer, :product_name, :fault, :complaint_status, :call_history, :warranty, :mechenic, :site_address, :coustomer_name, :coustomer_address, :coustomer_city, :coustomer_phone, :product_sr_no, :purchase_date, :createdby, :start_date, :stop_date)
+      params.require(:complaint).permit(:call_date, :dealer, :product_name, :fault, :complaint_status, :call_history, :warranty, :mechenic, :site_address, :coustomer_name, :coustomer_address, :coustomer_city, :coustomer_phone, :product_sr_no, :purchase_date, :createdby)
     end
 end

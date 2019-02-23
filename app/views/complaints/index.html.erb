@@ -15,6 +15,7 @@
   </thead>
 
   <tbody>
+    <%begin%>
     <% @complaints.each do |complaint| %>
       <tr>
         <td><%= complaint.id %></td>
@@ -37,6 +38,8 @@
 
       </tr>
     <% end %>
+    <%rescue%>
+    <%end%>
   </tbody>
 </table>
 
