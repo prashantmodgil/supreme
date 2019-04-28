@@ -4,7 +4,7 @@ class ComplaintsController < ApplicationController
   # GET /complaints
   # GET /complaints.json
   def index
-    @complaints = Complaint.all.page(params[:page])
+    @complaints = Complaint.all.order("created_at DESC").page(params[:page])
 
     if params[:start_date].present? && params[:stop_date].present? && params[:dealer_search][:dealer_name].present?
       start_date = params[:start_date].to_datetime
