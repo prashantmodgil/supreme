@@ -2,7 +2,7 @@ module ComplaintsHelper
 
   def product_brand
     a=Array.new
-    Product.all.each do |product|
+    Product.order(:name).each do |product|
       a << "#{product.name}-#{product.brand}"
     end
     return a

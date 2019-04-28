@@ -25,7 +25,7 @@
       Dealer
     </label>
     <div class="control select is-success" id="dropdowntype">
-      <%= form.collection_select :dealer, Dealer.all,:dealer_name,:dealer_name,:include_blank => "Select a Dealer" %>
+      <%= form.collection_select :dealer, Dealer.order(:dealer_name),:dealer_name,:dealer_name,:include_blank => "Select a Dealer" %>
     </div>
 
   <label class="label">
@@ -71,7 +71,7 @@
     Mechanic
   </label>
   <div class="control select is-success">
-    <%= form.collection_select :mechenic, Mechenic.all,:mec_name,:mec_name,:include_blank => "Select a Mechanic"%>
+    <%= form.collection_select :mechenic, Mechenic.order(:mec_name),:mec_name,:mec_name,:include_blank => "Select a Mechanic"%>
   </div>
 
   <label class="label">
