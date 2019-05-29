@@ -5,45 +5,28 @@
       <th>Call date</th>
       <th>Dealer</th>
       <th>Product name</th>
-      <th>Fault</th>
+      <th>Mechenic</th>
       <th>Complaint status</th>
-      <th>Call history</th>
-      <th>Call history</th>
-      <th>Call history</th>
-      <th>Call UID</th>
-      <th>Call date</th>
-      <th>Dealer</th>
-      <th>Product name</th>
-      <th>Fault</th>
-      <th>Complaint status</th>
-      <th>Call history</th>
-      <th>Call history</th>
-      <th>Call history</th>
+      <th>purchase date</th>
+      <th>Product serial</th>
+      <th>Close date</th>
     </tr>
   </thead>
 
   <tbody>
     <%begin%>
     <% @complaints.each do |complaint| %>
-      <tr>
+      <tr id="<%=complaint.id%>_tr">
         <td><%= complaint.id %></td>
         <td><%= complaint.call_date %></td>
         <td><%= complaint.dealer %></td>
         <td><%= complaint.product_name %></td>
-        <td><%= complaint.fault %></td>
-        <td><%= complaint.complaint_status %></td>
-        <td><%= complaint.call_history %></td>
-        <td><%= complaint.warranty %></td>
         <td><%= complaint.mechenic %></td>
-        <td><%= complaint.id %></td>
-        <td><%= complaint.call_date %></td>
-        <td><%= complaint.dealer %></td>
-        <td><%= complaint.product_name %></td>
-        <td><%= complaint.fault %></td>
         <td><%= complaint.complaint_status %></td>
-        <td><%= complaint.call_history %></td>
-        <td><%= complaint.warranty %></td>
-        <td><%= complaint.mechenic %></td>
+        <td><%= complaint.purchase_date %></td>
+        <td><%= complaint.product_sr_no %></td>
+        <td><%= complaint.close_date %></td>
+
         <td>
           <div style="float:right">
             <a href="<%=complaint_path(complaint)%>"><i class="fa fa-eye" aria-hidden="true" title="Show"></i></a>
@@ -53,6 +36,11 @@
             <% end %>
         </td>
       </tr>
+      <script>
+       $('#<%=complaint.id%>_tr''.td').click(function(){
+        alert("You entered p1!");
+      });
+      </script>
     <% end %>
     <%rescue%>
     <%end%>
