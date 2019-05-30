@@ -26,7 +26,25 @@
         <td><%= complaint.purchase_date %></td>
         <td><%= complaint.product_sr_no %></td>
         <td><%= complaint.close_date %></td>
-
+        <td>
+          <div style="float:right">
+            <a href="<%=complaint_path(complaint)%>"><i class="fa fa-eye" aria-hidden="true" title="Show"></i></a>
+            <a href="<%=edit_complaint_path(complaint)%>"><i class="fa fa-pencil" aria-hidden="true" title="Edit"></i></a>
+            <%= link_to complaint_path(complaint), method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <i class="fa fa-trash-o" aria-hidden="true" titile="Delete"></i>
+            <% end %>
+        </td>
+      </tr>
+      <tr id="<%=complaint.id%>_form">
+        <td><%= complaint.id %></td>
+        <td><input type="datetime-local" value= "<%= complaint.call_date  %>" /></td>
+        <td><%= complaint.dealer %></td>
+        <td><%= complaint.product_name %></td>
+        <td><%= complaint.mechenic %></td>
+        <td><%= complaint.complaint_status %></td>
+        <td><%= complaint.purchase_date %></td>
+        <td><%= complaint.product_sr_no %></td>
+        <td><%= complaint.close_date %></td>
         <td>
           <div style="float:right">
             <a href="<%=complaint_path(complaint)%>"><i class="fa fa-eye" aria-hidden="true" title="Show"></i></a>
@@ -37,7 +55,7 @@
         </td>
       </tr>
       <script>
-       $('#<%=complaint.id%>_tr''.td').click(function(){
+       $('#<%=complaint.id%>_tr').click(function(){
         alert("You entered p1!");
       });
       </script>
