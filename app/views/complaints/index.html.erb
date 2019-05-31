@@ -10,6 +10,7 @@
       <th>purchase date</th>
       <th>Product serial</th>
       <th>Close date</th>
+      <th colspan=3>Actions</th>
     </tr>
   </thead>
 
@@ -18,47 +19,58 @@
     <% @complaints.each do |complaint| %>
       <tr id="<%=complaint.id%>_tr">
         <td><%= complaint.id %></td>
-        <td><%= complaint.call_date %></td>
+        <td id="<%=complaint.id%>_tr_call_date"><%= complaint.call_date %></td>
         <td><%= complaint.dealer %></td>
         <td><%= complaint.product_name %></td>
         <td><%= complaint.mechenic %></td>
-        <td><%= complaint.complaint_status %></td>
-        <td><%= complaint.purchase_date %></td>
-        <td><%= complaint.product_sr_no %></td>
-        <td><%= complaint.close_date %></td>
+        <td id="<%=complaint.id%>_tr_complaint_status"><%= complaint.complaint_status %></td>
+        <td id="<%=complaint.id%>_tr_purchase_date"><%= complaint.purchase_date %></td>
+        <td id="<%=complaint.id%>_tr_product_sr_no"><%= complaint.product_sr_no %></td>
+        <td id="<%=complaint.id%>_tr_close_date"><%= complaint.close_date %></td>
         <td>
-          <div style="float:right">
-            <a href="<%=complaint_path(complaint)%>"><i class="fa fa-eye" aria-hidden="true" title="Show"></i></a>
-            <a href="<%=edit_complaint_path(complaint)%>"><i class="fa fa-pencil" aria-hidden="true" title="Edit"></i></a>
+          <a href="<%=complaint_path(complaint)%>"><i class="fa fa-eye" aria-hidden="true" title="Show"></i></a>
+        </td>
+        <td>
+          <a href="<%=edit_complaint_path(complaint)%>"><i class="fa fa-pencil" aria-hidden="true" title="Edit"></i></a>
+          <a href="#" onclick="show_form(<%= complaint.id %>)"><i class="fa fa-wrench" aria-hidden="true" title="update" id= "<%= complaint.id%>"></i></a>
+        </td>
+        <td>
             <%= link_to complaint_path(complaint), method: :delete, data: { confirm: 'Are you sure?' } do %>
               <i class="fa fa-trash-o" aria-hidden="true" titile="Delete"></i>
             <% end %>
         </td>
       </tr>
-      <tr id="<%=complaint.id%>_form">
+      <tr id="<%=complaint.id%>_form" style="display:none;">
         <td><%= complaint.id %></td>
-        <td><input type="datetime-local" value= "<%= complaint.call_date  %>" /></td>
+        <td><input type="datetime-local" value= "<%= complaint.call_date.strftime("%Y-%m-%dT%H:%M")%>" id= "<%= complaint.id%>_call_date"></td>
         <td><%= complaint.dealer %></td>
         <td><%= complaint.product_name %></td>
         <td><%= complaint.mechenic %></td>
-        <td><%= complaint.complaint_status %></td>
-        <td><%= complaint.purchase_date %></td>
-        <td><%= complaint.product_sr_no %></td>
-        <td><%= complaint.close_date %></td>
         <td>
-          <div style="float:right">
-            <a href="<%=complaint_path(complaint)%>"><i class="fa fa-eye" aria-hidden="true" title="Show"></i></a>
-            <a href="<%=edit_complaint_path(complaint)%>"><i class="fa fa-pencil" aria-hidden="true" title="Edit"></i></a>
-            <%= link_to complaint_path(complaint), method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <i class="fa fa-trash-o" aria-hidden="true" titile="Delete"></i>
-            <% end %>
+          <select id="<%= complaint.id %>_complian_status">
+            <% COMPLAINTS_STATUS.each do |option| %>
+              <% if option == complaint.complaint_status.to_s %>
+                <option value="<%= option%>" selected><%= option%></option>
+              <%else%>
+                <option value="<%= option%>"><%= option%></option>
+              <%end%>
+            <% end%>
+          </select>
+        </td>
+        <td><input type="datetime-local" value= "<%= complaint.purchase_date.strftime("%Y-%m-%dT%H:%M") %>" id= "<%= complaint.id%>_purchase_date"></td>
+        <td><input type="text" value= "<%= complaint.product_sr_no %>" id= "<%= complaint.id%>_product_sr_no"></td>
+        <td><input type="datetime-local" value= "<%= complaint.close_date.strftime("%Y-%m-%dT%H:%M")%>" id= "<%= complaint.id%>_close_date"></td>
+
+        <td>
+          <button type="button" class="button is-success" onclick="update_complaint(<%= complaint.id %>)">Save</button>
+        </td>
+        <td>
+          <button type="button" name="button" class=" button is-info" onclick="hide_form(<%= complaint.id %>)">Reset</button>
+        </td>
+        <td>
         </td>
       </tr>
-      <script>
-       $('#<%=complaint.id%>_tr').click(function(){
-        alert("You entered p1!");
-      });
-      </script>
+
     <% end %>
     <%rescue%>
     <%end%>
@@ -67,3 +79,53 @@
 <%= will_paginate @complaints%>
 <br>
 <%= link_to 'New Complaint', new_complaint_path, class: "button is-danger" %>
+
+
+<script>
+function update_complaint(id) {
+  var purchase_date = '#' + id + '_purchase_date';
+  var tr_purchase_date = '#' + id + '_tr_purchase_date';
+  var product_sr_no = '#' + id + '_product_sr_no';
+  var tr_product_sr_no = '#' + id + '_tr_product_sr_no';
+  var close_date = '#' + id + '_close_date';
+  var tr_close_date = '#' + id + '_tr_close_date';
+  var call_date = '#' + id + '_call_date';
+  var tr_call_date = '#' + id + '_tr_call_date';
+  var status = '#' + id + '_complian_status option:selected';
+  var tr_complian_status = '#' + id + '_tr_complaint_status';
+  var purchase_date_val = $(purchase_date).val();
+  var product_sr_no_val = $(product_sr_no).val();
+  var close_date_val = $(close_date).val();
+  var call_date_val = $(call_date).val();
+  var status_val = $(status).val();
+  var complain = { purchase_date: purchase_date_val, product_sr_no: product_sr_no_val, close_date: close_date_val, call_date: call_date_val, complaint_status: status_val };
+  $.ajax({
+    type : "POST",
+    url : "update_complaint",
+    data: {
+      "id": id,
+      "complaint": complain
+    },
+    success : function(response) {
+      $(tr_purchase_date).html('').append(response['complaint']['purchase_date']);
+      $(tr_product_sr_no).html('').append(response['complaint']['product_sr_no']);
+      $(tr_close_date).html('').append(response['complaint']['close_date']);
+      $(tr_call_date).html('').append(response['complaint']['call_date']);
+      $(tr_complian_status).html('').append(response['complaint']['complaint_status']);
+      hide_form(id);
+    }
+  });
+}
+function show_form(id_get) {
+  var tr_show = "#" + id_get + "_form";
+  var tr_hide = "#" + id_get + "_tr";
+  $(tr_show).show();
+  $(tr_hide).hide();
+}
+function hide_form(id_get) {
+  var tr_hide = "#" + id_get + "_form";
+  var tr_show = "#" + id_get + "_tr";
+  $(tr_show).show();
+  $(tr_hide).hide();
+}
+</script>

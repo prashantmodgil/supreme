@@ -1,5 +1,5 @@
 class ComplaintsController < ApplicationController
-  before_action :set_complaint, only: [:show, :edit, :update, :destroy]
+  before_action :set_complaint, only: [:show, :edit, :update, :destroy, :update_complaint]
 
   # GET /complaints
   # GET /complaints.json
@@ -83,6 +83,19 @@ class ComplaintsController < ApplicationController
     end
   end
 
+  def update_complaint
+    if @complaint.present?
+      @complaint.assign_attributes(complaint_params)
+      if @complaint.save
+        render json:{complaint: @complaint, message: "Complaint was successfully update." }
+      else
+        render json:{complaint: @complaint, message: "complaint not update" }
+      end
+    else
+      render json:{complaint: @complaint, message: "complaint not found with id" }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_complaint
@@ -91,6 +104,6 @@ class ComplaintsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def complaint_params
-      params.require(:complaint).permit(:call_date, :dealer, :product_name, :fault, :complaint_status, :call_history, :warranty, :mechenic, :site_address, :coustomer_name, :coustomer_address, :coustomer_city, :coustomer_phone, :product_sr_no, :purchase_date, :createdby)
+      params.require(:complaint).permit(:call_date, :dealer, :product_name, :fault, :complaint_status, :call_history, :warranty, :mechenic, :site_address, :coustomer_name, :coustomer_address, :coustomer_city, :coustomer_phone, :product_sr_no, :purchase_date, :createdby, :close_date)
     end
 end
