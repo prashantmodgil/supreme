@@ -42,7 +42,7 @@
         </tr>
         <tr id="<%=complaint.id%>_form" style="display:none;">
           <td><%= complaint.id %></td>
-          <td><input type="datetime-local" value= "<%= complaint.call_date.strftime("%Y-%m-%dT%H:%M") if complaint.close_date.present? %>" id= "<%= complaint.id%>_call_date"></td>
+          <td><input type="datetime-local" value= "<%= complaint.call_date.strftime("%Y-%m-%dT%H:%M") if complaint.call_date.present? %>" id= "<%= complaint.id%>_call_date"></td>
           <td><%= complaint.dealer %></td>
           <td><%= complaint.product_name %></td>
           <td><%= complaint.mechenic %></td>
