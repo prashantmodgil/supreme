@@ -13,7 +13,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem "bulma-rails", "~> 0.7.2"
 gem "font-awesome-rails"
 gem 'will_paginate', '~> 3.1.0'
-gem 'best_in_place'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -21,7 +20,7 @@ end
 
 group :development do
   gem 'listen'
-  gem 'sqlite3','~>1.3.13'
+  # gem 'sqlite3','~>1.3.13'
   gem 'web-console', '>= 3.3.0'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
