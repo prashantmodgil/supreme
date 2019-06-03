@@ -13,7 +13,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem "bulma-rails", "~> 0.7.2"
 gem "font-awesome-rails"
 gem 'will_paginate', '~> 3.1.0'
-# gem 'best_in_place'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -34,7 +33,7 @@ group :test do
 end
 
 group :production do
- # gem 'pg'
+ gem 'pg'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
