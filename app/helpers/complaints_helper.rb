@@ -7,6 +7,7 @@ module ComplaintsHelper
     end
     return a
   end
-
-
+  def date_view(date)
+      return date.strftime("%d-%m-%Y")
+  end
 end

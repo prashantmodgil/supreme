@@ -11,7 +11,7 @@
         <th>purchase date</th>
         <th>Product serial</th>
         <th>Close date</th>
-        <th colspan=3>Actions</th>
+        <th colspan=4>Actions</th>
       </tr>
     </thead>
 
@@ -19,19 +19,21 @@
       <% @complaints.each do |complaint| %>
         <tr id="<%=complaint.id%>_tr">
           <td><%= complaint.id %></td>
-          <td id="<%=complaint.id%>_tr_call_date"><%= complaint.call_date %></td>
+          <td id="<%=complaint.id%>_tr_call_date"><%= date_view(complaint.call_date)if complaint.call_date.present? %></td>
           <td><%= complaint.dealer %></td>
           <td><%= complaint.product_name %></td>
           <td><%= complaint.mechenic %></td>
           <td id="<%=complaint.id%>_tr_complaint_status"><%= complaint.complaint_status %></td>
-          <td id="<%=complaint.id%>_tr_purchase_date"><%= complaint.purchase_date %></td>
+          <td id="<%=complaint.id%>_tr_purchase_date"><%= date_view(complaint.purchase_date) if complaint.purchase_date.present?%></td>
           <td id="<%=complaint.id%>_tr_product_sr_no"><%= complaint.product_sr_no %></td>
-          <td id="<%=complaint.id%>_tr_close_date"><%= complaint.close_date %></td>
+          <td id="<%=complaint.id%>_tr_close_date"><%= date_view(complaint.close_date) if complaint.close_date.present? %></td>
           <td>
             <a href="<%=complaint_path(complaint)%>"><i class="fa fa-eye" aria-hidden="true" title="Show"></i></a>
           </td>
           <td>
             <a href="<%=edit_complaint_path(complaint)%>"><i class="fa fa-pencil" aria-hidden="true" title="Edit"></i></a>
+          </td>
+          <td>
             <a href="#" onclick="show_form(<%= complaint.id %>)"><i class="fa fa-wrench" aria-hidden="true" title="update" id= "<%= complaint.id%>"></i></a>
           </td>
           <td>
