@@ -5,26 +5,13 @@ class ComplaintsController < ApplicationController
   # GET /complaints.json
   def index
     @complaints = Complaint.all.order("created_at DESC").page(params[:page])
-
-    if params[:start_date].present? && params[:stop_date].present? && params[:dealer_search][:dealer_name].present?
-      start_date = params[:start_date].to_datetime
-      stop_date = params[:stop_date].to_datetime
-      @complaints = Complaint.where(created_at: start_date..stop_date).where(dealer: params[:dealer_search][:dealer_name]).page(params[:page])
-    end
-
-    if params[:start_date].present? && params[:stop_date].present? && params[:mechenic_search][:mec_name].present?
-      start_date = params[:start_date].to_datetime
-      stop_date = params[:stop_date].to_datetime
-      @complaints = Complaint.where(created_at: start_date..stop_date).where(dealer: params[:mechenic_search][:mec_name]).page(params[:page])
-    end
-
     search =params[:search]
     if search
-        capital_search = search.capitalize
-        downcase_search = search.downcase
-        upcase_search = search.upcase
-        title_search = search.titleize
-        @complaints = Complaint.where("mechenic like? OR mechenic like? OR mechenic like? OR mechenic like? OR product_sr_no like? OR product_sr_no like? OR product_sr_no like? OR product_sr_no like? OR dealer like? OR dealer like? OR dealer like? OR dealer like?","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%").page(params[:page])
+      capital_search = search.capitalize
+      downcase_search = search.downcase
+      upcase_search = search.upcase
+      title_search = search.titleize
+      @complaints = Complaint.where("mechenic like? OR mechenic like? OR mechenic like? OR mechenic like? OR product_sr_no like? OR product_sr_no like? OR product_sr_no like? OR product_sr_no like? OR dealer like? OR dealer like? OR dealer like? OR dealer like?","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%").page(params[:page])
     end
   end
 
