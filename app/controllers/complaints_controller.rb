@@ -23,6 +23,7 @@ class ComplaintsController < ApplicationController
   # GET /complaints/new
   def new
     @complaint = Complaint.new
+    @complaint_id = Complaint.last.id+1
   end
 
   # GET /complaints/1/edit
@@ -68,6 +69,10 @@ class ComplaintsController < ApplicationController
       format.html { redirect_to complaints_url, notice: 'Complaint was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def update_complaints
+    @complaints = Complaint.all.order("created_at DESC").page(params[:page])
   end
 
   def update_complaint

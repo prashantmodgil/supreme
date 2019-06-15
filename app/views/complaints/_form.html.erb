@@ -9,28 +9,37 @@
       </ul>
     </div>
   <% end %>
+  <label class="label">
+    Call ID
+  </label>
 
-  <div class="feild">
-    <label class="label">
-      Call Date
-    </label>
-    <div class="control has-icons-left has-icons-right">
-      <%= form.datetime_local_field :call_date ,class: "input is-success" %>
-      <span class="icon is-small is-left">
-        <i class="fa fa-calendar"></i>
-      </span>
-    </div>
+  <label class="label">
+    <%=@complaint_id%>
+  </label>
+
+  <label class="label">
+    Call Date
+  </label>
+
+  <div class="control has-icons-left has-icons-right">
+    <%= form.datetime_local_field :call_date ,class: "input is-success" %>
+    <span class="icon is-small is-left">
+      <i class="fa fa-calendar"></i>
+    </span>
   </div>
-    <label class="label">
-      Dealer
-    </label>
-    <div class="control select is-success" id="dropdowntype">
-      <%= form.collection_select :dealer, Dealer.order(:dealer_name),:dealer_name,:dealer_name,:include_blank => "Select a Dealer" %>
-    </div>
+
+  <label class="label">
+    Dealer
+  </label>
+
+  <div class="control select is-success" id="dropdowntype">
+    <%= form.collection_select :dealer, Dealer.order(:dealer_name),:dealer_name,:dealer_name,:include_blank => "Select a Dealer" %>
+  </div>
 
   <label class="label">
     Product
   </label>
+
   <div class="control select is-success">
     <%= form.collection_select :product_name,product_brand ,:to_s,:to_s,:include_blank => "Select a Product"%>
   </div>
@@ -44,7 +53,6 @@
       <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
     </span>
   </div>
-
 
   <label class="label">
     Complaint Status
@@ -105,13 +113,13 @@
     <%= form.text_field :coustomer_address,class: "input is-success",placeholder: "Addressto be visited",:required => true %>
     <span class="icon is-small is-left">
       <i class="fa fa-location-arrow" aria-hidden="true"></i>
-
     </span>
   </div>
 
   <label class="label">
     City
   </label>
+
   <div class="control has-icons-left has-icons-right">
     <%= form.text_field :coustomer_city,class:"input is-success",placeholder:"City",required:true %>
     <span class="icon is-small is-left">
@@ -122,6 +130,7 @@
   <label class="label">
     Contact
   </label>
+
   <div class="control has-icons-left has-icons-right">
     <%= form.text_field :coustomer_phone,class:"input is-success",placeholder:"10 digit coustomer's contact"%>
     <span class="icon is-small is-left">
@@ -132,6 +141,7 @@
   <label class="label">
     Product Sr.no
   </label>
+
   <div class="control has-icons-left has-icons-right">
     <%= form.text_field :product_sr_no,class:"input is-success",placeholder:"The unique product_sr_no" %>
     <span class="icon is-small is-left">
@@ -142,28 +152,33 @@
   <label class="label">
     Purchase Date
   </label>
+
   <div class="control has-icons-left has-icons-right">
     <%= form.datetime_local_field :purchase_date,class: "input is-success" %>
     <span class="icon is-small is-left">
       <i class="fa fa-calendar"></i>
     </span>
   </div>
+
   <label class="label">
     Closing Date
   </label>
+
   <div class="control has-icons-left has-icons-right">
     <%= form.datetime_local_field :close_date, class: "input is-success" %>
     <span class="icon is-small is-left">
       <i class="fa fa-calendar"></i>
     </span>
   </div>
+
   <label class="label">
     Complaint Created by
   </label>
+
   <div class="control select is-success">
     <%= form.collection_select :createdby, Employee.all, :name, :name, :include_blank => "Select a Employee" %>
   </div>
-<br><br>
+  <br><br>
   <% if (params[:controller]=='complaints'&& params[:action] == 'new')%>
     <div class="col">
       <%= form.submit "Rise a complaint ticket", class: 'button is-success'%>
