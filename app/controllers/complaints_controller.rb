@@ -72,7 +72,6 @@ class ComplaintsController < ApplicationController
   end
 
   def update_complaints
-    byebug
    if params[:mechenic_search][:complaint_status].present?
      status =params[:mechenic_search][:complaint_status]
      mec_name =params[:mechenic_search][:mec_name]
