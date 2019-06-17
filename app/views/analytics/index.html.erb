@@ -78,11 +78,11 @@
     </div>
   </div>
 </div>
-<!-- <section class="info-tiles">
+<section class="info-tiles">
   <div class="tile is-ancestor has-text-centered">
     <div class="tile is-parent">
       <article class="tile is-child box">
-        <%= form_tag complaints_path, :method => 'get' do%>
+        <%= form_tag update_complaints_path, :method => 'get' do%>
         <div class="feild">
           <label class="label">
             Start Date
@@ -106,49 +106,20 @@
           </div>
         </div>
         <label class="label">
-          Dealer
-        </label>
-        <div class="control select is-success" id="dropdowntype">
-          <%= collection_select :dealer_search, :dealer_name,Dealer.all,:dealer_name,:dealer_name,:include_blank => "Select a Dealer" %>
-        </div>
-        <%= submit_tag "Search", class: 'button is-success'%>
-        <%end%>
-      </article>
-    </div>
-    <div class="tile is-parent">
-      <article class="tile is-child box">
-        <%= form_tag complaints_path, :method => 'get' do%>
-        <div class="feild">
-          <label class="label">
-            Start Date
-          </label>
-          <div class="control has-icons-left has-icons-right">
-            <%= datetime_local_field_tag :start_date,{},{class:'input is-success'}%>
-            <span class="icon is-small is-left">
-              <i class="fa fa-calendar"></i>
-            </span>
-          </div>
-        </div>
-        <div class="feild">
-          <label class="label">
-            Stop Date
-          </label>
-          <div class="control has-icons-left has-icons-right">
-            <%= datetime_local_field_tag :stop_date,{},{class:'input is-success'} %>
-            <span class="icon is-small is-left">
-              <i class="fa fa-calendar"></i>
-            </span>
-          </div>
-        </div>
-        <label class="label">
-          Dealer
+          Mechenic
         </label>
         <div class="control select is-success" id="dropdowntype">
           <%= collection_select :mechenic_search, :mec_name,Mechenic.all,:mec_name,:mec_name,:include_blank => "Select a Mechenic" %>
+        </div>
+        <label class="label">
+          Complaint Status
+        </label>
+        <div class="control select is-success" id="dropdowntype">
+          <%= collection_select :mechenic_search, :complaint_status,COMPLAINTS_STATUS,:to_s,:to_s,:include_blank => "Select a Complaint Status" %>
         </div>
         <%= submit_tag "Search", class: 'button is-success'%>
         <%end%>
       </article>
     </div>
   </div>
-</section> -->
+</section>
