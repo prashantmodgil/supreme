@@ -72,15 +72,15 @@ class ComplaintsController < ApplicationController
   end
 
   def update_complaints
-   if params[:mechenic_search][:complaint_status].present?
+   if  params.has_key? (:mechenic_search)
      status =params[:mechenic_search][:complaint_status]
      mec_name =params[:mechenic_search][:mec_name]
      start_date = params[:start_date].to_datetime
      stop_date = params[:stop_date].to_datetime
      @complaints =Complaint.where("complaint_status like? AND mechenic like?","#{status}","#{mec_name}").where(created_at: start_date..stop_date).order("created_at DESC").page(params[:page])
-   else
-     @complaints = Complaint.all.order("created_at DESC").page(params[:page])
    end
+     @complaints = Complaint.all.order("created_at DESC").page(params[:page])
+
   end
 
   def update_complaint
