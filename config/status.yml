@@ -2,5 +2,6 @@ compliants:
   - pending
   - part_pending
   - ok
-  - halt
+  - hold
   - cancelled
+  - unsolved_closed
