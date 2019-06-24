@@ -1,4 +1,5 @@
 class Complaint < ApplicationRecord
+  byebug
   validates :mechenic,presence: true
   validates :createdby,presence: true
   validates :dealer,presence: true
@@ -9,6 +10,6 @@ class Complaint < ApplicationRecord
   # validates :site_address,presence: true
   # validates :coustomer_address,presence: true
   # validates :coustomer_phone,presence: true
-  validates :coustomer_phone, format: { with: /\d{10}/,message: "only allows 10 digits" }
+  # validates :coustomer_phone, format: { with: /\d{10}/,message: "only allows 10 digits" }
    self.per_page = 10
 end
