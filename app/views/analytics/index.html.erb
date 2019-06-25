@@ -109,7 +109,7 @@
           Mechenic
         </label>
         <div class="control select is-success" id="dropdowntype">
-          <%= collection_select :mechenic_search, :mec_name,Mechenic.all,:mec_name,:mec_name,:include_blank => "Select a Mechenic" %>
+          <%= collection_select :mechenic_search, :mec_name,Mechenic.order(:dealer_name),:mec_name,:mec_name,:include_blank => "Select a Mechenic" %>
         </div>
         <label class="label">
           Complaint Status
@@ -154,7 +154,7 @@
           Dealer
         </label>
         <div class="control select is-success" id="dropdowntype">
-          <%= collection_select :dealer_search, :dealer_name,Dealer.all,:dealer_name,:dealer_name,:include_blank => "Select a Dealer" %>
+          <%= collection_select :dealer_search, :dealer_name,Dealer.order(:dealer_name),:dealer_name,:dealer_name,:include_blank => "Select a Dealer" %>
         </div>
         <label class="label">
           Complaint Status
