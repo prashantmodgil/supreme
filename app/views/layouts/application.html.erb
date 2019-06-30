@@ -9,19 +9,16 @@
 
   <body>
     <%= render 'layouts/navbar'%>
-      <% if notice %><p class="notification"><button class="delete"></button><%= notice %></p> <% end %>
-      <% if alert %><p class="notification"><button class="delete"></button><%= alert %></p> <% end %>
+    <% if notice %><p class="notification"><button class="delete"></button><%= notice %></p> <% end %>
+    <% if alert %><p class="notification"><button class="delete"></button><%= alert %></p> <% end %>
     <div id="app">
       <section class="container-fluid main-content columns is-fullheight">
-          <%= render "layouts/sidebar"%>
+        <%= render "layouts/sidebar"%>
         <div class="column is-10" style="overflow-x: auto;">
-          <div class="section">
           <%= yield %>
-          </div>
         </div>
       </section>
     </div>
-  <%= render 'layouts/footer'%>
-
+    <%= render 'layouts/footer'%>
   </body>
 </html>
