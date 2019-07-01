@@ -43,7 +43,10 @@
       <% end %>
     </tbody>
   </table>
-  <%= will_paginate @complaints%>
+  <% if params.has_key?(:mechenic_search) || params.has_key?(:dealer_search) %>
+  <%else%>
+  <%= will_paginate @complaints %>
+  <%end%>
 <%end%>
 <br>
 
