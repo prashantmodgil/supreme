@@ -5,3 +5,4 @@ compliants:
   - hold
   - cancelled
   - unsolved_closed
+  - repeat
