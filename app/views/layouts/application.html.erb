@@ -8,17 +8,23 @@
   </head>
 
   <body>
-    <%= render 'layouts/navbar'%>
+    <%= render 'layouts/navbar' if !devise_controller? %>
     <% if notice %><p class="notification"><button class="delete"></button><%= notice %></p> <% end %>
     <% if alert %><p class="notification"><button class="delete"></button><%= alert %></p> <% end %>
     <div id="app">
       <section class="container-fluid main-content columns is-fullheight">
-        <%= render "layouts/sidebar"%>
+        <%= render "layouts/sidebar" if !devise_controller?%>
+        <%if !devise_controller? %>
         <div class="column is-10" style="overflow-x: auto;">
           <%= yield %>
         </div>
+        <%else%>
+        <div class="column is-12" style="overflow-x: auto;">
+          <%= yield %>
+        </div>
+        <%end%>
       </section>
     </div>
-    <%= render 'layouts/footer'%>
+    <%= render 'layouts/footer' if !devise_controller? %>
   </body>
 </html>

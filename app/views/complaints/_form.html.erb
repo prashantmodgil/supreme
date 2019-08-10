@@ -33,7 +33,7 @@
     Dealer
   </label>
 
-  <div class="control select is-success" id="dropdowntype">
+  <div class="control select is-success is-full" id="dropdowntype">
     <%= form.collection_select :dealer, Dealer.order(:dealer_name),:dealer_name,:dealer_name,:include_blank => "Select a Dealer" %>
   </div>
 

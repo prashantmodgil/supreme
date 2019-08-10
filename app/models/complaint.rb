@@ -1,5 +1,4 @@
 class Complaint < ApplicationRecord
-  # byebug
   validates :mechenic,presence: true
   validates :createdby,presence: true
   validates :dealer,presence: true

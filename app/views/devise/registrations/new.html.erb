@@ -1,0 +1,76 @@
+<section class="hero is-fullheight session-background">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+          <div class= "box">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            <div class="field">
+              <label class="label">
+                Name
+              </label>
+              <div class="control has-icons-left">
+                <%= f.text_field :name ,class: "input is-success" %>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-user"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">
+                Email
+              </label>
+              <div class="control has-icons-left">
+                <%= f.email_field :email ,class: "input is-success" %>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-envelope-square"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">
+                Contact
+              </label>
+              <div class="control has-icons-left">
+                <%= f.text_field :contact ,class: "input is-success" %>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-phone"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">
+                Password
+              </label>
+              <div class="control has-icons-left">
+                <%= f.password_field :password ,class: "input is-success" %>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-key"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">
+                Confirm Password
+              </label>
+              <div class="control has-icons-left">
+                <%= f.password_field :password_confirmation,class: "input is-success" %>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-key"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control has-icons-left">
+                <%= f.submit "Sign Up", class: 'button is-success'%>
+              </div>
+            </div>
+            <%= render "devise/shared/links" %>
+          </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+</section>

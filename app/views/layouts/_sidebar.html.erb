@@ -22,5 +22,11 @@
       <a href="<%=dealers_path%>" class="navbar-item">
         <span class="icon"><i class="fa fa-address-card"></i></span> Dealers
       </a>
+      <%if ! employee_signed_in?%>
+        <%= link_to 'SignUp',new_employee_registration_path%>
+        <%= link_to 'SignIn',new_employee_session_path%>
+      <%else%>
+        <%=link_to 'SignOut', destroy_employee_session_path , method: :DELETE%>
+      <%end%>
   </ul>
 </aside>

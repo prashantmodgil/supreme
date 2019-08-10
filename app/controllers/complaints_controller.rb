@@ -24,7 +24,7 @@ class ComplaintsController < ApplicationController
   # GET /complaints/new
   def new
     @complaint = Complaint.new
-    @complaint_id = Complaint.last.id+1
+    @complaint_id = Complaint.last !=nil ? Complaint.last.id+1 : 0
   end
 
   # GET /complaints/1/edit
