@@ -12,174 +12,202 @@
   <label class="label">
     Call ID
   </label>
-
   <label class="label">
     <%=@complaint_id%>
     <%=@complaint.id%>
   </label>
 
-  <label class="label">
-    Call Date
-  </label>
-
-  <div class="control has-icons-left has-icons-right">
-    <%= form.date_field :call_date ,class: "input is-success" %>
-    <span class="icon is-small is-left">
-      <i class="fa fa-calendar"></i>
-    </span>
+<div class="columns">
+  <div class="column is-one-third">
+    <label class="label">
+      Call Date
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.date_field :call_date ,class: "input is-success" %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-calendar"></i>
+      </span>
+    </div>
   </div>
-
-  <label class="label">
-    Dealer
-  </label>
-
-  <div class="control select is-success is-full" id="dropdowntype">
-    <%= form.collection_select :dealer, Dealer.order(:dealer_name),:dealer_name,:dealer_name,:include_blank => "Select a Dealer" %>
+  <div class="column is-one-third">
+    <label class="label">
+      Dealer
+    </label>
+    <div class="control select is-success is-full" id="dropdowntype">
+      <%= form.collection_select :dealer, Dealer.order(:dealer_name),:dealer_name,:dealer_name,:include_blank => "Select a Dealer" %>
+    </div>
   </div>
-
-  <label class="label">
-    Product
-  </label>
-
-  <div class="control select is-success">
-    <%= form.collection_select :product_name,product_brand ,:to_s,:to_s,:include_blank => "Select a Product"%>
+  <div class="column is-one-third">
+    <label class="label">
+      Product
+    </label>
+    <div class="control select is-success">
+      <%= form.collection_select :product_name,product_brand ,:to_s,:to_s,:include_blank => "Select a Product"%>
+    </div>
   </div>
+</div>
 
-  <label class="label">
-    Fault
-  </label>
-  <div class="control has-icons-left has-icons-right">
-    <%= form.text_field :fault ,class: "input is-success",placeholder: "fault",:required => true %>
-    <span class="icon is-small is-left">
-      <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-    </span>
+<div class="columns">
+  <div class="column is-one-third">
+    <label class="label">
+      Fault
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.text_field :fault ,class: "input is-success",placeholder: "fault",:required => true %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+      </span>
+    </div>
   </div>
-  <label class="label">
-    Description
-  </label>
-  <div class="control has-icons-left has-icons-right">
-    <%= form.text_field :description ,class: "input is-success",placeholder: "description" %>
-    <span class="icon is-small is-left">
-      <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-    </span>
+  <div class="column is-one-third">
+    <label class="label">
+      Description
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.text_field :description ,class: "input is-success",placeholder: "description" %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+      </span>
+    </div>
   </div>
-
-  <label class="label">
-    Complaint Status
-  </label>
-  <div class="control select is-success">
-    <%= form.select :complaint_status, COMPLAINTS_STATUS, :include_blank =>"Status" %>
+  <div class="column is-one-third">
+    <label class="label">
+      Complaint Status
+    </label>
+    <div class="control select is-success">
+      <%= form.select :complaint_status, COMPLAINTS_STATUS, :include_blank =>"Status" %>
+    </div>
   </div>
+</div>
 
-  <label class="label">
-    History
-  </label>
-  <div class="control select is-success">
-    <%= form.select :call_history, ["fresh","repeat"], :include_blank =>"History"%>
+<div class="columns">
+  <div class="column is-one-third">
+    <label class="label">
+      History
+    </label>
+    <div class="control select is-success">
+      <%= form.select :call_history, ["fresh","repeat"], :include_blank =>"History"%>
+    </div>
   </div>
-
-  <label class="label">
-    Warranty Status
-  </label>
-  <div class="control select is-success">
-    <%= form.select :warranty,["out of warranty","within warranty"],:include_blank =>"Warranty status" %>
+  <div class="column is-one-third">
+    <label class="label">
+      Warranty Status
+    </label>
+    <div class="control select is-success">
+      <%= form.select :warranty,["out of warranty","within warranty"],:include_blank =>"Warranty status" %>
+    </div>
   </div>
-
-  <label class="label">
-    Mechanic
-  </label>
-  <div class="control select is-success">
-    <%= form.collection_select :mechenic, Mechenic.order(:mec_name),:mec_name,:mec_name,:include_blank => "Select a Mechanic"%>
+  <div class="column is-one-third">
+    <label class="label">
+      Mechanic
+    </label>
+    <div class="control select is-success">
+      <%= form.collection_select :mechenic, Mechenic.order(:mec_name),:mec_name,:mec_name,:include_blank => "Select a Mechanic"%>
+    </div>
   </div>
+</div>
 
-  <label class="label">
-    Site Address
-  </label>
-  <div class="control select is-success">
-    <%= form.select :site_address,["On counter","Coustomer address"],:include_blank => "Site Location" %>
+<div class="columns">
+  <div class="column is-one-third">
+    <label class="label">
+      Site Address
+    </label>
+    <div class="control select is-success">
+      <%= form.select :site_address,["On counter","Coustomer address"],:include_blank => "Site Location" %>
+    </div>
   </div>
-
-  <label class="label">
-    In Stock
-  </label>
-  <div class="control select is-success">
-    <%= form.select :instock,["Instock","Onsite"],:include_blank => "Stock Location" %>
+  <div class="column is-one-third">
+    <label class="label">
+      In Stock
+    </label>
+    <div class="control select is-success">
+      <%= form.select :instock,["Instock","Onsite"],:include_blank => "Stock Location" %>
+    </div>
   </div>
-
-  <label class="label">
-    Coustomer Name
-  </label>
-  <div class="control has-icons-left has-icons-right">
-    <%= form.text_field :coustomer_name,class: "input is-success",placeholder: "Name of Coustomer"%>
-    <span class="icon is-small is-left">
-      <i class="fa fa-user"></i>
-    </span>
+  <div class="column is-one-third">
+    <label class="label">
+      Coustomer Name
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.text_field :coustomer_name,class: "input is-success",placeholder: "Name of Coustomer"%>
+      <span class="icon is-small is-left">
+        <i class="fa fa-user"></i>
+      </span>
+    </div>
   </div>
+</div>
 
-  <label class="label">
-    Address
-  </label>
-  <div class="control has-icons-left has-icons-right">
-    <%= form.text_field :coustomer_address,class: "input is-success",placeholder: "Addressto be visited" %>
-    <span class="icon is-small is-left">
-      <i class="fa fa-location-arrow" aria-hidden="true"></i>
-    </span>
+<div class="columns">
+  <div class="column is-one-third">
+    <label class="label">
+      Address
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.text_field :coustomer_address,class: "input is-success",placeholder: "Addressto be visited" %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-location-arrow" aria-hidden="true"></i>
+      </span>
+    </div>
   </div>
-
-  <label class="label">
-    City
-  </label>
-
-  <div class="control has-icons-left has-icons-right">
-    <%= form.text_field :coustomer_city,class:"input is-success",placeholder:"City" %>
-    <span class="icon is-small is-left">
-      <i class="fa fa-map-marker"></i>
-    </span>
+  <div class="column is-one-third">
+    <label class="label">
+      City
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.text_field :coustomer_city,class:"input is-success",placeholder:"City" %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-map-marker"></i>
+      </span>
+    </div>
   </div>
-
-  <label class="label">
-    Contact
-  </label>
-
-  <div class="control has-icons-left has-icons-right">
-    <%= form.text_field :coustomer_phone,class:"input is-success",placeholder:"10 digit coustomer's contact"%>
-    <span class="icon is-small is-left">
-      <i class="fa fa-mobile"></i>
-    </span>
+  <div class="column is-one-third">
+    <label class="label">
+      Contact
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.text_field :coustomer_phone,class:"input is-success",placeholder:"10 digit coustomer's contact"%>
+      <span class="icon is-small is-left">
+        <i class="fa fa-mobile"></i>
+      </span>
+    </div>
   </div>
+</div>
 
-  <label class="label">
-    Product Sr.no
-  </label>
-
-  <div class="control has-icons-left has-icons-right">
-    <%= form.text_field :product_sr_no,class:"input is-success",placeholder:"The unique product_sr_no" %>
-    <span class="icon is-small is-left">
-      <i class="fa fa-qrcode" aria-hidden="true"></i>
-    </span>
+<div class="columns">
+  <div class="column is-one-third">
+    <label class="label">
+      Product Sr.no
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.text_field :product_sr_no,class:"input is-success",placeholder:"The unique product_sr_no" %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-qrcode" aria-hidden="true"></i>
+      </span>
+    </div>
   </div>
-
-  <label class="label">
-    Purchase Date
-  </label>
-
-  <div class="control has-icons-left has-icons-right">
-    <%= form.date_field :purchase_date,class: "input is-success" %>
-    <span class="icon is-small is-left">
-      <i class="fa fa-calendar"></i>
-    </span>
+  <div class="column is-one-third">
+    <label class="label">
+      Purchase Date
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.date_field :purchase_date,class: "input is-success" %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-calendar"></i>
+      </span>
+    </div>
   </div>
-
-  <label class="label">
-    Closing Date
-  </label>
-
-  <div class="control has-icons-left has-icons-right">
-    <%= form.date_field :close_date, class: "input is-success" %>
-    <span class="icon is-small is-left">
-      <i class="fa fa-calendar"></i>
-    </span>
+  <div class="column is-one-third">
+    <label class="label">
+      Closing Date
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.date_field :close_date, class: "input is-success" %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-calendar"></i>
+      </span>
+    </div>
   </div>
+</div>
 
   <label class="label">
     Complaint Created by
