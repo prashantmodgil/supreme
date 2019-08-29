@@ -6,7 +6,7 @@ module AnalyticsHelper
      Complaint.where(complaint_status: ["resolved","ok"] ).count
   end
   def pending_complaints
-    Complaint.where.not("complaint_status != ?", "resolved"||"ok" ).count
+    Complaint.where.not(complaint_status: ["resolved","ok"] ).count
   end
   def mec_30 name
     Complaint.where("mechenic = ?", name ).count
