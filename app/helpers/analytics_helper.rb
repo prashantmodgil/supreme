@@ -3,7 +3,7 @@ module AnalyticsHelper
     Complaint.count
   end
   def resolved_complaints
-    Complaint.where("complaint_status = ?", "resolved"||"ok" ).count
+     Complaint.where(complaint_status: ["resolved","ok"] ).count
   end
   def pending_complaints
     Complaint.where("complaint_status != ?", "resolved"||"ok" ).count
