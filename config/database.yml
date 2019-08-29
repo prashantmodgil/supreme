@@ -5,12 +5,15 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  database: db/development1.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: myapp_development
+  pool: 5
 
-test:
-  <<: *default
-  database: db/test1.sqlite3
+
+# test:
+#   <<: *default
+#   database: db/test1.sqlite3
 
 production:
   adapter: postgresql
