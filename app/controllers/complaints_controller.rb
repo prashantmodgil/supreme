@@ -34,7 +34,6 @@ class ComplaintsController < ApplicationController
   # POST /complaints
   # POST /complaints.json
   def create
-    byebu
     @complaint = Complaint.new(complaint_params)
 
     respond_to do |format|
