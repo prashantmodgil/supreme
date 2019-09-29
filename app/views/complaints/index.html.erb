@@ -17,39 +17,39 @@
 
     <tbody>
       <% @complaints.each do |complaint| %>
-        <tr id="<%=complaint.id%>_tr">
-          <td><%= complaint.id %></td>
-          <td id="<%=complaint.id%>_tr_call_date"><%= date_view(complaint.call_date)if complaint.call_date.present? %></td>
+        <tr id="<%=complaint.uid%>_tr">
+          <td><%= complaint.uid %></td>
+          <td id="<%=complaint.uid%>_tr_call_date"><%= date_view(complaint.call_date)if complaint.call_date.present? %></td>
           <td><%= complaint.dealer %></td>
           <td><%= complaint.product_name %></td>
           <td><%= complaint.mechenic %></td>
-          <td id="<%=complaint.id%>_tr_complaint_status"><%= complaint.complaint_status %></td>
-          <td id="<%=complaint.id%>_tr_purchase_date"><%= date_view(complaint.purchase_date) if complaint.purchase_date.present?%></td>
-          <td id="<%=complaint.id%>_tr_product_sr_no"><%= complaint.product_sr_no %></td>
-          <td id="<%=complaint.id%>_tr_close_date"><%= date_view(complaint.close_date) if complaint.close_date.present? %></td>
+          <td id="<%=complaint.uid%>_tr_complaint_status"><%= complaint.complaint_status %></td>
+          <td id="<%=complaint.uid%>_tr_purchase_date"><%= date_view(complaint.purchase_date) if complaint.purchase_date.present?%></td>
+          <td id="<%=complaint.uid%>_tr_product_sr_no"><%= complaint.product_sr_no %></td>
+          <td id="<%=complaint.uid%>_tr_close_date"><%= date_view(complaint.close_date) if complaint.close_date.present? %></td>
           <td>
             <a href="<%=complaint_path(complaint)%>"><i class="fa fa-eye" aria-hidden="true" title="Show"></i></a>
           </td>
           <td>
             <a href="<%=edit_complaint_path(complaint)%>"><i class="fa fa-pencil" aria-hidden="true" title="Edit"></i></a>
           </td>
-          <td>
-            <a href="#" onclick="show_form(<%= complaint.id %>)"><i class="fa fa-wrench" aria-hidden="true" title="update" id= "<%= complaint.id%>"></i></a>
-          </td>
+          <!-- <td>
+            <a href="#" onclick="show_form(<%= complaint.uid %>)"><i class="fa fa-wrench" aria-hidden="true" title="update" id= "<%= complaint.uid%>"></i></a>
+          </td> -->
           <td>
               <%= link_to complaint_path(complaint), method: :delete, data: { confirm: 'Are you sure?' } do %>
                 <i class="fa fa-trash-o" aria-hidden="true" titile="Delete"></i>
               <% end %>
           </td>
         </tr>
-        <tr id="<%=complaint.id%>_form" style="display:none;">
-          <td><%= complaint.id %></td>
-          <td><input type="datetime-local" value= "<%= complaint.call_date.strftime("%Y-%m-%dT%H:%M") if complaint.call_date.present? %>" id= "<%= complaint.id%>_call_date"></td>
+        <tr id="<%=complaint.uid%>_form" style="display:none;">
+          <td><%= complaint.uid %></td>
+          <td><input type="datetime-local" value= "<%= complaint.call_date.strftime("%Y-%m-%dT%H:%M") if complaint.call_date.present? %>" id= "<%= complaint.uid%>_call_date"></td>
           <td><%= complaint.dealer %></td>
           <td><%= complaint.product_name %></td>
           <td><%= complaint.mechenic %></td>
           <td>
-            <select id="<%= complaint.id %>_complian_status">
+            <select id="<%= complaint.uid %>_complian_status">
               <% COMPLAINTS_STATUS.each do |option| %>
                 <% if option == complaint.complaint_status.to_s %>
                   <option value="<%= option%>" selected><%= option%></option>
@@ -59,9 +59,9 @@
               <% end%>
             </select>
           </td>
-          <td><input type="datetime-local" value= "<%= complaint.purchase_date.strftime("%Y-%m-%dT%H:%M") if complaint.purchase_date.present? %>" id= "<%= complaint.id%>_purchase_date"></td>
-          <td><input type="text" value= "<%= complaint.product_sr_no %>" id= "<%= complaint.id%>_product_sr_no"></td>
-          <td><input type="datetime-local" value= "<%= complaint.close_date.strftime("%Y-%m-%dT%H:%M") if complaint.close_date.present? %>" id= "<%= complaint.id%>_close_date"></td>
+          <td><input type="datetime-local" value= "<%= complaint.purchase_date.strftime("%Y-%m-%dT%H:%M") if complaint.purchase_date.present? %>" id= "<%= complaint.uid%>_purchase_date"></td>
+          <td><input type="text" value= "<%= complaint.product_sr_no %>" id= "<%= complaint.uid%>_product_sr_no"></td>
+          <td><input type="datetime-local" value= "<%= complaint.close_date.strftime("%Y-%m-%dT%H:%M") if complaint.close_date.present? %>" id= "<%= complaint.uid%>_close_date"></td>
 
           <td>
             <button type="button" class="button is-success" onclick="update_complaint(<%= complaint.id %>)">Save</button>
@@ -81,9 +81,10 @@
 <br>
 <%= link_to 'New Complaint', new_complaint_path, class: "button is-danger" %>
 <%= link_to 'Edit Complaints', update_complaints_path, class: "button is-info" %>
+<!-- <%= link_to 'Export Complaints', export_complaints_path(data: params[:search]), class: "button is-info" if params.has_key? (:search)%> -->
 
 
-<script>
+<!-- <script>
 function update_complaint(id) {
   var purchase_date = '#' + id + '_purchase_date';
   var tr_purchase_date = '#' + id + '_tr_purchase_date';
@@ -130,4 +131,4 @@ function hide_form(id_get) {
   $(tr_show).show();
   $(tr_hide).hide();
 }
-</script>
+</script> -->

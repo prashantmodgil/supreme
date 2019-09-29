@@ -24,7 +24,7 @@ class ComplaintsController < ApplicationController
   # GET /complaints/new
   def new
     @complaint = Complaint.new
-    @complaint_id = Complaint.last !=nil ? Complaint.last.id+1 : 0
+    @complaint_uid = Complaint.last !=nil ? Complaint.last.uid.to_i + 1 : 0
   end
 
   # GET /complaints/1/edit
@@ -34,6 +34,7 @@ class ComplaintsController < ApplicationController
   # POST /complaints
   # POST /complaints.json
   def create
+    byebu
     @complaint = Complaint.new(complaint_params)
 
     respond_to do |format|
@@ -103,6 +104,12 @@ class ComplaintsController < ApplicationController
     end
   end
 
+  # def export_complaints
+  #   byebug
+  #   p "=========================================================================="
+  #   redirect_to :back
+  # end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_complaint
@@ -111,6 +118,6 @@ class ComplaintsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def complaint_params
-      params.require(:complaint).permit(:call_date, :dealer, :product_name, :fault, :complaint_status, :call_history, :warranty, :mechenic, :site_address, :coustomer_name, :coustomer_address, :coustomer_city, :coustomer_phone, :product_sr_no, :purchase_date, :createdby, :close_date,:description)
+      params.require(:complaint).permit(:call_date, :dealer, :product_name, :fault, :complaint_status, :call_history, :warranty, :mechenic, :site_address, :coustomer_name, :coustomer_address, :coustomer_city, :coustomer_phone, :product_sr_no, :purchase_date, :createdby, :close_date,:description,:uid)
     end
 end

@@ -13,10 +13,10 @@
     Call ID
   </label>
   <label class="label">
-    <%=@complaint_id%>
-    <%=@complaint.id%>
+    <%=@complaint_uid%>
+    <%=complaint.uid%>
   </label>
-
+<%= form.hidden_field :uid, :value => @complaint_uid if (params[:controller]=='complaints'&& params[:action] == 'new') %>
 <div class="columns">
   <div class="column is-one-third">
     <label class="label">
