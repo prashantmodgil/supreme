@@ -1,11 +1,11 @@
 class Complaint < ApplicationRecord
-  validates :mechenic,presence: true
-  validates :createdby,presence: true
-  validates :dealer,presence: true
-  validates :product_name,presence: true
-  validates :complaint_status,presence: true
-  validates :warranty,presence: true
-  validates :call_history,presence: true
+  # validates :mechenic,presence: true
+  # validates :createdby,presence: true
+  # validates :dealer,presence: true
+  # validates :product_name,presence: true
+  # validates :complaint_status,presence: true
+  # validates :warranty,presence: true
+  # validates :call_history,presence: true
   # validates :site_address,presence: true
   # validates :coustomer_address,presence: true
   # validates :coustomer_phone,presence: true
