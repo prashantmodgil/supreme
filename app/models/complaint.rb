@@ -7,7 +7,7 @@ class Complaint < ApplicationRecord
   validates :complaint_status,presence: true
   validates :warranty,presence: true
   validates :call_history,presence: true
-  validates :uid,presence: true
+  # validates :uid,presence: true
   # validates :site_address,presence: true
   # validates :coustomer_address,presence: true
   # validates :coustomer_phone,presence: true
