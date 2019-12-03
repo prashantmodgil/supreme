@@ -78,13 +78,21 @@ class ComplaintsController < ApplicationController
      mec_name = params[:mechenic_search][:mec_name]
      start_date = params[:start_date].to_datetime
      stop_date = params[:stop_date].to_datetime
-     @complaints =Complaint.where("complaint_status like? AND mechenic like?","#{status}","#{mec_name}").where(call_date: start_date..stop_date).order("created_at DESC")
+     if status != "all"
+       @complaints =Complaint.where("complaint_status like? AND mechenic like?","#{status}","#{mec_name}").where(call_date: start_date..stop_date).order("created_at DESC")
+     else
+       @complaints =Complaint.where("mechenic like?","#{mec_name}").where(call_date: start_date..stop_date).order("created_at DESC")
+     end
    elsif params.has_key? (:dealer_search)
      status = params[:dealer_search][:complaint_status]
      dealer_name = params[:dealer_search][:dealer_name]
      start_date = params[:start_date].to_datetime
      stop_date = params[:stop_date].to_datetime
-    @complaints =Complaint.where("complaint_status like? AND dealer like?","#{status}","#{dealer_name}").where(call_date: start_date..stop_date).order("created_at DESC")
+     if status =! "all"
+       @complaints =Complaint.where("complaint_status like? AND dealer like?","#{status}","#{dealer_name}").where(call_date: start_date..stop_date).order("created_at DESC")
+     else
+       @complaints =Complaint.where("dealer like?","#{dealer_name}").where(call_date: start_date..stop_date).order("created_at DESC")
+     end
    else
      @complaints = Complaint.all.order("created_at DESC").page(params[:page])
    end
@@ -103,11 +111,10 @@ class ComplaintsController < ApplicationController
     end
   end
 
-  # def export_complaints
-  #   byebug
-  #   p "=========================================================================="
-  #   redirect_to :back
-  # end
+  def export_complaints
+    p "=========================================================================="
+    redirect_to :back
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
