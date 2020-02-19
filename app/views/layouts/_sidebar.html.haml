@@ -1,0 +1,10 @@
+#mySidenav.sidenav
+  %a#analytics{:href => "#{analytics_path}"} Analytics
+  %a#complaints{:href => "#{complaints_path}"} Complaits
+  %a#products{:href => "#{products_path}"} Products
+  %a#brands{:href => "#{brands_path}"} Brands
+  %a#mechenics{:href => "#{mechenics_path}"} Mechenics
+  %a#employees{:href => "#{employees_path}"} Employees
+  %a#dealers{:href => "#{dealers_path}"} Dealers
+  - unless ! employee_signed_in?
+    = link_to 'SignOut', destroy_employee_session_path , method: :DELETE, id:'session'

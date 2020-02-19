@@ -1,0 +1,7 @@
+%nav.navbar
+  %h1{:style => "color:#FFF"} Superme Enterprise
+  - unless !params[:controller] == "analytics"
+    .navbar-end.navbar-item.field.has-addons
+      = form_tag search_controller_url(params[:controller]), :method => 'get',class:"form-inline" do
+        = text_field_tag :search, params[:search],class:" form-control form-group mx-sm-3 mb-2"
+        = submit_tag "Search",:name=>nil,class:"btn btn-primary mb-2"

@@ -11,8 +11,6 @@
     <%= render 'layouts/navbar' if !devise_controller? %>
     <% if notice %><p class="notification"><button class="delete"></button><%= notice %></p> <% end %>
     <% if alert %><p class="notification"><button class="delete"></button><%= alert %></p> <% end %>
-    <div id="app">
-      <section class="container-fluid main-content columns is-fullheight">
         <%= render "layouts/sidebar" if !devise_controller?%>
         <%if !devise_controller? %>
         <div class="column is-10" style="overflow-x: auto;">

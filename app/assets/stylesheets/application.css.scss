@@ -12,8 +12,59 @@
  *
  *= require font-awesome
  */
-@import "bulma";
+@import "bootstrap";
 @import "font-awesome";
-.session-background {
-   background-color:Tomato;
+
+.navbar {
+  font-style: italic;
+  font-family: serif;
+  background-image: linear-gradient(to right, #209cee,#FFF);
+}
+
+#mySidenav a {
+  position: absolute;
+  left: -130px;
+  transition: 0.3s;
+  padding: 15px;
+  width: 140px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 0 15% 15px 0;
+  background-color: #FFF;
+}
+
+#mySidenav a:hover {
+  left: 0;
+  background-color: #209cee;
+}
+
+#analytics {
+  top: 70px;
+}
+
+#complaints {
+  top: 130px;
+}
+
+#products {
+  top: 190px;
+}
+
+#brands {
+  top: 250px;
+}
+#mechenics {
+  top: 310px;
+}
+
+#employees {
+  top: 370px;
+}
+
+#dealers {
+  top: 430px;
+}
+#session {
+  top: 490px;
 }
