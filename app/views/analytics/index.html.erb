@@ -117,6 +117,21 @@
         <div class="control select is-success" id="dropdowntype">
           <%= collection_select :mechenic_search, :complaint_status,COMPLAINTS_STATUS,:to_s,:to_s,:include_blank => "Select a Complaint Status" %>
         </div>
+
+        <label class="label">
+          Site Address
+        </label>
+        <div class="control select is-success">
+          <%=  collection_select :mechenic_search, :site_address,["On counter","Coustomer address"],:to_s,:to_s,:include_blank => "Location" %>
+        </div>
+
+        <label class="label">
+          Fault
+        </label>
+        <div class="input">
+          <%= text_field_tag :fault,nil,class:"control input is-success",placeholder: 'Enter search term'%>
+        </div>
+
         <%= submit_tag "Search", class: 'button is-success'%>
         <%end%>
       </article>
@@ -162,6 +177,21 @@
         <div class="control select is-success" id="dropdowntype">
           <%= collection_select :dealer_search, :complaint_status,COMPLAINTS_STATUS,:to_s,:to_s,:include_blank => "Select a Complaint Status" %>
         </div>
+
+        <label class="label">
+          Site Address
+        </label>
+        <div class="control select is-success">
+          <%=  collection_select :dealer_search, :site_address,["On counter","Coustomer address"],:to_s,:to_s,:include_blank => "Location" %>
+        </div>
+
+        <label class="label">
+          Fault
+        </label>
+        <div class="input">
+          <%= text_field_tag :fault,nil,class:"control input is-success",placeholder: 'Enter search term'%>
+        </div>
+
         <%= submit_tag "Search", class: 'button is-success'%>
         <%end%>
       </article>
