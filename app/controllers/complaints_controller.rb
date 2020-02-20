@@ -82,9 +82,17 @@ class ComplaintsController < ApplicationController
      stop_date = params[:stop_date].to_datetime
      if status != "all"
        if fault.present?
-         @complaints =Complaint.where("complaint_status like? AND mechenic like? AND site_address like? AND fault like?","#{status}","#{mec_name}","#{site_address}","#{fault}").where(call_date: start_date..stop_date).order("created_at DESC")
+         if site_address.present?
+           @complaints =Complaint.where("complaint_status like? AND mechenic like? AND site_address like? AND fault like?","#{status}","#{mec_name}","#{site_address}","#{fault}").where(call_date: start_date..stop_date).order("created_at DESC")
+         else
+           @complaints =Complaint.where("complaint_status like? AND mechenic like? AND fault like?","#{status}","#{mec_name}","#{fault}").where(call_date: start_date..stop_date).order("created_at DESC")
+         end
        else
-         @complaints =Complaint.where("complaint_status like? AND mechenic like? AND site_address like?","#{status}","#{mec_name}","#{site_address}").where(call_date: start_date..stop_date).order("created_at DESC")
+         if site_address.present?
+           @complaints =Complaint.where("complaint_status like? AND mechenic like? AND site_address like?","#{status}","#{mec_name}","#{site_address}").where(call_date: start_date..stop_date).order("created_at DESC")
+         else
+           @complaints =Complaint.where("complaint_status like? AND mechenic like?","#{status}","#{mec_name}").where(call_date: start_date..stop_date).order("created_at DESC")
+         end
        end
      else
        @complaints =Complaint.where("mechenic like?","#{mec_name}").where(call_date: start_date..stop_date).order("created_at DESC")
@@ -98,19 +106,22 @@ class ComplaintsController < ApplicationController
      stop_date = params[:stop_date].to_datetime
      if status != "all"
        if fault.present?
-         puts "--------------status not all and faiult present"
-         @complaints =Complaint.where("complaint_status like? AND dealer like? AND site_address like? AND fault like?","#{status}","#{dealer_name}","#{site_address}","#{fault}").where(call_date: start_date..stop_date).order("created_at DESC")
+         if site_address.present?
+           @complaints =Complaint.where("complaint_status like? AND dealer like? AND site_address like? AND fault like?","#{status}","#{dealer_name}","#{site_address}","#{fault}").where(call_date: start_date..stop_date).order("created_at DESC")
+         else
+          @complaints =Complaint.where("complaint_status like? AND dealer like? AND fault like?","#{status}","#{dealer_name}","#{fault}").where(call_date: start_date..stop_date).order("created_at DESC")
+         end
        else
-         puts "--------------status not all and faiult NOT present"
-         @complaints =Complaint.where("complaint_status like? AND dealer like? AND site_address like?","#{status}","#{dealer_name}","#{site_address}").where(call_date: start_date..stop_date).order("created_at DESC")
+         if site_address.present?
+           @complaints =Complaint.where("complaint_status like? AND dealer like? AND site_address like?","#{status}","#{dealer_name}","#{site_address}").where(call_date: start_date..stop_date).order("created_at DESC")
+         else
+           @complaints =Complaint.where("complaint_status like? AND dealer like?","#{status}","#{dealer_name}",).where(call_date: start_date..stop_date).order("created_at DESC")
+         end
        end
      else
-       puts "--------------status not all"
        @complaints =Complaint.where("dealer like?","#{dealer_name}").where(call_date: start_date..stop_date).order("created_at DESC")
      end
    else
-     puts "--------------entire else"
-
      @complaints = Complaint.all.order("created_at DESC").page(params[:page])
    end
   end
