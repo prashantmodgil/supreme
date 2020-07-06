@@ -13,6 +13,10 @@ class DealersController < ApplicationController
         title_search = search.titleize
         @dealers = Dealer.where("dealer_name like? OR dealer_name like? OR dealer_name like? OR dealer_name like?","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%").page(params[:page])
     end
+    respond_to do |format|
+      format.html
+      format.csv { send_data @dealers.to_csv, filename: "dealers-#{Date.today}.csv" }
+    end
   end
 
   # GET /dealers/1

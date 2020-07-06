@@ -13,6 +13,10 @@ class MechenicsController < ApplicationController
         title_search = search.titleize
         @mechenics = Mechenic.where("mec_name like? OR mec_name like? OR mec_name like? OR mec_name like?","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%").page(params[:page])
     end
+    respond_to do |format|
+      format.html
+      format.csv { send_data @mechenics.to_csv, filename: "mechenics-#{Date.today}.csv" }
+    end
   end
 
   # GET /mechenics/1

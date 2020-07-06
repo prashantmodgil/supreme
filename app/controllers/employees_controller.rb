@@ -4,6 +4,10 @@ class EmployeesController < ApplicationController
   # GET /employees.json
   def index
     @employees = Employee.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @employees.to_csv, filename: "employees-#{Date.today}.csv" }
+    end
   end
 
   # GET /employees/1

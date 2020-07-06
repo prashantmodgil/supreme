@@ -14,6 +14,10 @@ class ComplaintsController < ApplicationController
     else
       @complaints = Complaint.all.order("created_at DESC").page(params[:page])
     end
+    respond_to do |format|
+      format.html
+      format.csv { send_data @complaints.to_csv, filename: "complaints-#{Date.today}.csv" }
+    end
   end
 
   # GET /complaints/1

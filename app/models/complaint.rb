@@ -16,4 +16,14 @@ class Complaint < ApplicationRecord
    def check_uid
      self.uid = Complaint.last.uid + 1
    end
+
+   def self.to_csv
+     attributes = %w{id call_date dealer product_name fault complaint_status call_history warranty mechenic site_address coustomer_name coustomer_address coustomer_city coustomer_phone product_sr_no purchase_date createdby instock close_date description uid}
+     CSV.generate(headers: true) do |csv|
+       csv << attributes
+       all.each do |cmpl|
+         csv << attributes.map{ |attr| cmpl.send(attr) }
+       end
+     end
+   end
 end
