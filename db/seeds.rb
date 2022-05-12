@@ -1,4 +1,4 @@
-csv_text = File.read(Rails.root.join('lib', 'seed','app4', 'products-2021-05-01.csv'))
+csv_text = File.read(Rails.root.join('lib', 'seed','app4', 'products-2022-05-12.csv'))
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
   t = Product.new
@@ -9,7 +9,7 @@ csv.each do |row|
 end
 puts "There are now #{Product.count} rows in the product table"
 
-csv_text = File.read(Rails.root.join('lib', 'seed','app4', 'brands-2021-05-01.csv'))
+csv_text = File.read(Rails.root.join('lib', 'seed','app4', 'brands-2022-05-12.csv'))
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
   t = Brand.new
@@ -19,7 +19,7 @@ csv.each do |row|
 end
 puts "There are now #{Brand.count} rows in the brand table"
 
-csv_text = File.read(Rails.root.join('lib', 'seed', 'app4','dealers-2021-05-01.csv'))
+csv_text = File.read(Rails.root.join('lib', 'seed', 'app4','dealers-2022-05-12.csv'))
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
   t = Dealer.new
@@ -31,7 +31,7 @@ csv.each do |row|
 end
 puts "There are now #{Dealer.count} rows in the dealer table"
 
-csv_text = File.read(Rails.root.join('lib', 'seed', 'app4','mechenics-2021-05-01.csv'))
+csv_text = File.read(Rails.root.join('lib', 'seed', 'app4','mechenics-2022-05-12.csv'))
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
   t = Mechenic.new
