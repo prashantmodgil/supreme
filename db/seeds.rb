@@ -1,4 +1,4 @@
-csv_text = File.read(Rails.root.join('lib', 'seed', 'products-2021-05-01.csv'))
+csv_text = File.read(Rails.root.join('lib', 'seed','app4', 'products-2021-05-01.csv'))
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
   t = Product.new
@@ -9,7 +9,7 @@ csv.each do |row|
 end
 puts "There are now #{Product.count} rows in the product table"
 
-csv_text = File.read(Rails.root.join('lib', 'seed', 'brands-2021-05-01.csv'))
+csv_text = File.read(Rails.root.join('lib', 'seed','app4', 'brands-2021-05-01.csv'))
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
   t = Brand.new
@@ -19,7 +19,7 @@ csv.each do |row|
 end
 puts "There are now #{Brand.count} rows in the brand table"
 
-csv_text = File.read(Rails.root.join('lib', 'seed', 'dealers-2021-05-01.csv'))
+csv_text = File.read(Rails.root.join('lib', 'seed', 'app4','dealers-2021-05-01.csv'))
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
   t = Dealer.new
@@ -31,7 +31,7 @@ csv.each do |row|
 end
 puts "There are now #{Dealer.count} rows in the dealer table"
 
-csv_text = File.read(Rails.root.join('lib', 'seed', 'mechenics-2021-05-01.csv'))
+csv_text = File.read(Rails.root.join('lib', 'seed', 'app4','mechenics-2021-05-01.csv'))
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
   t = Mechenic.new
@@ -46,7 +46,7 @@ csv.each do |row|
 end
 puts "There are now #{Mechenic.count} rows in the mechenic table"
 
-csv_text = File.read(Rails.root.join('lib', 'seed', 'complaints-2021-12-23.csv'))
+csv_text = File.read(Rails.root.join('lib', 'seed','app4', 'complaints-2021-12-23.csv'))
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
   t = Complaint.new
@@ -73,8 +73,8 @@ end
 puts "There are now #{Complaint.count} rows in the mechenic table"
 
 e = Employee.new
-e.email = "dev@dev.com"
-e.password = "123456"
-e.password_confirmation = "123456"
+e.email = "poonam@supreme.biz"
+e.password = "poonam"
+e.password_confirmation = "poonam"
 e.contact = "1234567890"
 e.save!
