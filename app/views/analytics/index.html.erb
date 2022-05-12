@@ -33,6 +33,28 @@
     </div>
   </div>
 </section>
+<section class="info-tiles">
+  <div class="tile is-ancestor has-text-centered">
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <p class="title"><%= total_complaints %></p>
+        <p class="subtitle">Last 30 days Complaints</p>
+      </article>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+          <p class="title"><%=resolved_complaints%></p>
+          <p class="subtitle"> Last 30 days Resolved complaints</p>
+      </article>
+    </div>
+    <div class="tile is-parent">
+        <article class="tile is-child box">
+            <p class="title"><%=pending_complaints%></p>
+            <p class="subtitle"> Last 30 days Pending complaints</p>
+        </article>
+    </div>
+  </div>
+</section>
 <div class="columns">
   <div class="column is-6">
     <div class="card events-card">
