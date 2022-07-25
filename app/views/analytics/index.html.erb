@@ -1,3 +1,7 @@
+
+cancelled box //unsolved and  canclled
+//pemding and part pemding
+
 <section class="hero is-info welcome is-small">
     <div class="hero-body">
         <div class="container">
@@ -31,26 +35,38 @@
             <p class="subtitle">Pending complaints</p>
         </article>
     </div>
+    <div class="tile is-parent">
+        <article class="tile is-child box">
+            <p class="title"><%=cancelled_complaints%></p>
+            <p class="subtitle">Cancelled complaints</p>
+        </article>
+    </div>
   </div>
 </section>
 <section class="info-tiles">
   <div class="tile is-ancestor has-text-centered">
     <div class="tile is-parent">
       <article class="tile is-child box">
-        <p class="title"><%= total_complaints %></p>
-        <p class="subtitle">Last 30 days Complaints</p>
+        <p class="title"><%= total_complaints_this_month %></p>
+        <p class="subtitle">This month Complaints</p>
       </article>
     </div>
     <div class="tile is-parent">
       <article class="tile is-child box">
-          <p class="title"><%=resolved_complaints%></p>
-          <p class="subtitle"> Last 30 days Resolved complaints</p>
+          <p class="title"><%=resolved_complaints_this_month%></p>
+          <p class="subtitle"> This month  Resolved complaints</p>
       </article>
     </div>
     <div class="tile is-parent">
         <article class="tile is-child box">
-            <p class="title"><%=pending_complaints%></p>
-            <p class="subtitle"> Last 30 days Pending complaints</p>
+            <p class="title"><%=pending_complaints_this_month%></p>
+            <p class="subtitle"> This month days Pending complaints</p>
+        </article>
+    </div>
+    <div class="tile is-parent">
+        <article class="tile is-child box">
+            <p class="title"><%=cancelled_complaints_this_month%></p>
+            <p class="subtitle">Cancelled complaints</p>
         </article>
     </div>
   </div>
@@ -60,7 +76,7 @@
     <div class="card events-card">
       <header class="card-header">
         <p class="card-header-title">
-          Mechanic Board
+          Mechanic Board (Beginning of this Month)
         </p>
       </header>
       <div class="card-table">
@@ -71,12 +87,14 @@
               <th>total</th>
               <th>solved</th>
               <th>pending</th>
+              <th>cancelled</th>
               <%all_mechname.each do |name|%>
               <tr>
                   <td><%=name%></td>
                   <td><%=mec_30 (name)%></td>
                   <td><%=mec_solved_30 (name)%></td>
-                  <td><%=name_pending_total (name)%></td>
+                  <td><%=name_pending_30 (name)%></td>
+                  <td><%=name_cancelled_30 (name)%></td>
               </tr>
               <%end%>
         </tbody>

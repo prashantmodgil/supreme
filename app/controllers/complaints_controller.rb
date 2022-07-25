@@ -144,7 +144,6 @@ class ComplaintsController < ApplicationController
   end
 
   def export_complaints
-    p "=========================================================================="
     redirect_to :back
   end
 
