@@ -106,14 +106,15 @@ class ComplaintsController < ApplicationController
      fault = params[:fault]
      status = params[:dealer_search][:complaint_status]
      dealer_name = params[:dealer_search][:dealer_name]
+     installation = params[:dealer_search][:installation]
      start_date = params[:start_date].to_datetime
      stop_date = params[:stop_date].to_datetime
      if status != "all"
        if fault.present?
          if site_address.present?
-           @complaints =Complaint.where("complaint_status like? AND dealer like? AND site_address like? AND fault like?","#{status}","#{dealer_name}","#{site_address}","#{fault}").where(call_date: start_date..stop_date).order("created_at DESC")
+           @complaints =Complaint.where("complaint_status like? AND dealer like? AND site_address like? AND fault like?","#{status}","#{dealer_name}","#{site_address}","#{fault}").where(installation: installation).where(call_date: start_date..stop_date).order("created_at DESC")
          else
-          @complaints =Complaint.where("complaint_status like? AND dealer like? AND fault like?","#{status}","#{dealer_name}","#{fault}").where(call_date: start_date..stop_date).order("created_at DESC")
+          @complaints =Complaint.where("complaint_status like? AND dealer like? AND fault like?","#{status}","#{dealer_name}","#{fault}").where(call_date: start_date..stop_date).where(installation: installation).order("created_at DESC")
          end
        else
          if site_address.present?
@@ -155,6 +156,6 @@ class ComplaintsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def complaint_params
-      params.require(:complaint).permit(:call_date, :dealer, :product_name, :fault, :complaint_status, :call_history, :warranty, :mechenic, :site_address, :coustomer_name, :coustomer_address, :coustomer_city, :coustomer_phone, :product_sr_no, :purchase_date, :createdby, :close_date,:description,:uid)
+      params.require(:complaint).permit(:call_date, :dealer, :product_name, :fault, :complaint_status, :call_history, :warranty, :mechenic, :site_address, :coustomer_name, :coustomer_address, :coustomer_city, :coustomer_phone, :product_sr_no, :purchase_date, :createdby, :close_date,:description,:uid,:installation)
     end
 end

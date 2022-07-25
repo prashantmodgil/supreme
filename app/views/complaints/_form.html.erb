@@ -209,14 +209,25 @@
   </div>
 </div>
 
-  <label class="label">
-    Complaint Created by
-  </label>
-
-  <div class="control select is-success">
-    <%= form.collection_select :createdby, Employee.all, :name, :name, :include_blank => "Select a Employee" %>
+<div class="columns">
+  <div class="column is-one-third">
+    <label class="label">
+      Complaint Created by
+    </label>
+    <div class="control select is-success">
+          <%= form.collection_select :createdby, Employee.all, :name, :name, :include_blank => "Select a Employee" %>
+    </div>
   </div>
-  <br><br>
+
+  <div class="column is-one-third">
+    <label class="label">
+      Installation
+    </label>
+    <div class="control select is-success">
+      <%= form.select :installation,options_for_select([['No', false],['Yes', true]],{:selected => @complaint.installation})%>
+    </div>
+  </div> 
+</div>
   <% if (params[:controller]=='complaints'&& params[:action] == 'new')%>
     <div class="col">
       <%= form.submit "Rise a complaint ticket", class: 'button is-success'%>

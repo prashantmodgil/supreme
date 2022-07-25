@@ -65,6 +65,14 @@
           <td>Purchase Date</td>
           <td><%= @complaint.purchase_date%></td>
         </tr>
+        <tr>
+          <td>Installation</td>
+          <%if @complaint.installation %>
+          <td>Yes</td>
+          <%else%>  
+          <td>No<td>
+          <%end%>
+        </tr>
       </thead>
     </table>
   </div>

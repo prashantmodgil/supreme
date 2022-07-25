@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_29_063412) do
+ActiveRecord::Schema.define(version: 2022_07_25_121605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_09_29_063412) do
     t.datetime "close_date"
     t.text "description"
     t.integer "uid"
+    t.boolean "installation", default: false
   end
 
   create_table "dealers", force: :cascade do |t|
