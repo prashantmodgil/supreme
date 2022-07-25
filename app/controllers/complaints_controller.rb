@@ -124,7 +124,11 @@ class ComplaintsController < ApplicationController
          end
        end
      else
+      if !params[:dealer_search][:installation].nil?
+       @complaints =Complaint.where("dealer like?","#{dealer_name}").where(installation: installation).where(call_date: start_date..stop_date).order("created_at DESC")
+      else
        @complaints =Complaint.where("dealer like?","#{dealer_name}").where(call_date: start_date..stop_date).order("created_at DESC")
+     end
      end
    else
      @complaints = Complaint.all.order("created_at DESC").page(params[:page])
