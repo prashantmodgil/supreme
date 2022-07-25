@@ -89,13 +89,15 @@ cancelled box //unsolved and  canclled
               <th>pending</th>
               <th>cancelled</th>
               <%all_mechname.each do |name|%>
-              <tr>
-                  <td><%=name%></td>
-                  <td><%=mec_30 (name)%></td>
-                  <td><%=mec_solved_30 (name)%></td>
-                  <td><%=name_pending_30 (name)%></td>
-                  <td><%=name_cancelled_30 (name)%></td>
-              </tr>
+                <%if mec_30(name) !=0 %>
+                  <tr>
+                      <td><%=name%></td>
+                      <td><%=mec_30 (name)%></td>
+                      <td><%=mec_solved_30 (name)%></td>
+                      <td><%=name_pending_30 (name)%></td>
+                      <td><%=name_cancelled_30 (name)%></td>
+                  </tr>
+                <%end%>
               <%end%>
         </tbody>
     </table>
