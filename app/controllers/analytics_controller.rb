@@ -1,7 +1,13 @@
 class AnalyticsController < ApplicationController
   def index
-    # @mechenics = Mechenic.all.pluck("mec_name")
     @complaints = Complaint.all
-    # @total_complaints = Complaint.where(created_at: (Time.now.midnight - 30.day)..Time.now.midnight).count
+    if !params[:start_date].nil? && !params[:stop_date].nil?
+      @start_date = params[:start_date].to_datetime
+      @stop_date = params[:stop_date].to_datetime
+    else
+      @start_date = Time.now.beginning_of_month
+      @stop_date = Time.now
+    end
+    @filtercomplaints = @complaints.where(call_date: @start_date..@stop_date)
   end
 end

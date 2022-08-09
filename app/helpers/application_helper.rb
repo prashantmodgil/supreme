@@ -13,6 +13,8 @@ module ApplicationHelper
       mechenics_path
     when "products"
       products_path
+    when "analytics"
+      analytics_path
     end
   end
 end

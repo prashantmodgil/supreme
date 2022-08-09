@@ -2,7 +2,7 @@
     <div class="hero-body">
         <div class="container">
             <h1 class="title">
-                This is your Report card.
+                This is your Report card Between <%=@start_date.to_date%> to <%=@stop_date.to_date%>
             </h1>
             <h2 class="subtitle">
                 I hope you are having a greate day!!!
@@ -11,6 +11,45 @@
     </div>
 </section>
 <br>
+
+  <%= form_tag search_controller_url(params[:controller]), :method => 'get' do%>
+<div class="columns">
+
+  <div class="column is-one-third">
+    <label class="label">
+      Start Date
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <%= date_field_tag :start_date,{},{class:'input is-success'}%>
+      <span class="icon is-small is-left">
+        <i class="fa fa-calendar"></i>
+      </span>
+    </div>
+  </div>
+
+  <div class="column is-one-third">
+    <label class="label">
+      Stop Date
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <%= date_field_tag :stop_date,{},{class:'input is-success'}%>
+      <span class="icon is-small is-left">
+        <i class="fa fa-calendar"></i>
+      </span>
+    </div>
+  </div>
+  <div class="column is-one-third">
+   <label class="label">
+   <br>
+      </label>
+      <%= submit_tag "Search", class: 'button is-success'%>
+    </div>
+</div>
+    
+  <%end%>
+
+<br>
+
 <section class="info-tiles">
   <div class="tile is-ancestor has-text-centered">
     <div class="tile is-parent">
@@ -44,25 +83,25 @@
     <div class="tile is-parent">
       <article class="tile is-child box">
         <p class="title"><%= total_complaints_this_month %></p>
-        <p class="subtitle">This month Complaints</p>
+        <p class="subtitle">Complatins between <%=@start_date.to_date%> & <%=@stop_date.to_date%></p>
       </article>
     </div>
     <div class="tile is-parent">
       <article class="tile is-child box">
           <p class="title"><%=resolved_complaints_this_month%></p>
-          <p class="subtitle"> This month  Resolved complaints</p>
+          <p class="subtitle"> Resolved complaints between <%=@start_date.to_date%> & <%=@stop_date.to_date%></p>
       </article>
     </div>
     <div class="tile is-parent">
         <article class="tile is-child box">
             <p class="title"><%=pending_complaints_this_month%></p>
-            <p class="subtitle"> This month days Pending complaints</p>
+            <p class="subtitle"> Pending complaints between <%=@start_date.to_date%> & <%=@stop_date.to_date%></p>
         </article>
     </div>
     <div class="tile is-parent">
         <article class="tile is-child box">
             <p class="title"><%=cancelled_complaints_this_month%></p>
-            <p class="subtitle">Cancelled complaints</p>
+            <p class="subtitle">Cancelled Complaints between <%=@start_date.to_date%> & <%=@stop_date.to_date%></p>
         </article>
     </div>
   </div>
