@@ -12,7 +12,7 @@ class ComplaintsController < ApplicationController
       title_search = search.titleize
       @complaints = Complaint.where("mechenic like? OR mechenic like? OR mechenic like? OR mechenic like? OR product_sr_no like? OR product_sr_no like? OR product_sr_no like? OR product_sr_no like? OR dealer like? OR dealer like? OR dealer like? OR dealer like? OR coustomer_name like? OR coustomer_name like? OR coustomer_name like? OR coustomer_name like? OR coustomer_phone like? ","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%","#{capital_search}%","#{downcase_search}%","#{upcase_search}%","#{title_search}%","#{search}%").order("created_at DESC").page(params[:page])
     else
-      @c = Complaint.all.order("created_at ASC")
+      @c = Complaint.all.order("created_at DESC")
       @complaints = @c.page(params[:page])
     end
     respond_to do |format|
