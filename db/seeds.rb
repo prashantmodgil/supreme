@@ -1,4 +1,4 @@
-csv_text = File.read(Rails.root.join('lib', 'seed','app4', 'products-2022-05-12.csv'))
+csv_text = File.read(Rails.root.join('lib', 'seed','app4', 'products-2022-11-11.csv'))
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
   t = Product.new
@@ -9,7 +9,7 @@ csv.each do |row|
 end
 puts "There are now #{Product.count} rows in the product table"
 
-csv_text = File.read(Rails.root.join('lib', 'seed','app4', 'brands-2022-05-12.csv'))
+csv_text = File.read(Rails.root.join('lib', 'seed','app4', 'brands-2022-11-11.csv'))
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
   t = Brand.new
@@ -19,7 +19,7 @@ csv.each do |row|
 end
 puts "There are now #{Brand.count} rows in the brand table"
 
-csv_text = File.read(Rails.root.join('lib', 'seed', 'app4','dealers-2022-05-12.csv'))
+csv_text = File.read(Rails.root.join('lib', 'seed', 'app4','dealers-2022-11-11.csv'))
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
   t = Dealer.new
@@ -31,7 +31,7 @@ csv.each do |row|
 end
 puts "There are now #{Dealer.count} rows in the dealer table"
 
-csv_text = File.read(Rails.root.join('lib', 'seed', 'app4','mechenics-2022-05-12.csv'))
+csv_text = File.read(Rails.root.join('lib', 'seed', 'app4','mechenics-2022-11-11.csv'))
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
   t = Mechenic.new
@@ -46,11 +46,10 @@ csv.each do |row|
 end
 puts "There are now #{Mechenic.count} rows in the mechenic table"
 
-csv_text = File.read(Rails.root.join('lib', 'seed','app4', 'complaints-2021-12-23.csv'))
+csv_text = File.read(Rails.root.join('lib', 'seed', 'app4','complaints-2022-11-11.csv'))
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
   t = Complaint.new
-  t.id = row['id']
   t.uid = row['uid']
   t.call_date = row['call_date']
   t.dealer = row['dealer']
@@ -70,11 +69,88 @@ csv.each do |row|
   t.call_history = row['call_history']
   t.save!
 end
-puts "There are now #{Complaint.count} rows in the mechenic table"
+puts "There are now #{Complaint.count} rows in the complaints table"
+
+csv_text = File.read(Rails.root.join('lib', 'seed','app4', 'complaints-2022-11-11-1.csv'))
+csv = CSV.parse(csv_text, :headers => true)
+csv.each do |row|
+  t = Complaint.new
+  t.uid = row['uid']
+  t.call_date = row['call_date']
+  t.dealer = row['dealer']
+  t.product_name = row['product_name']
+  t.fault = row['fault']
+  t.complaint_status = row['complaint_status']
+  t.warranty = row['warranty']
+  t.mechenic = row['mechenic']
+  t.site_address = row['site_address']
+  t.coustomer_name = row['coustomer_name']
+  t.coustomer_address = row['coustomer_address']
+  t.coustomer_city = row['coustomer_city']
+  t.coustomer_phone = row['coustomer_phone']
+  t.product_sr_no = row['product_sr_no']
+  t.purchase_date = row['purchase_date']
+  t.createdby = row['createdby']
+  t.call_history = row['call_history']
+  t.save!
+end
+puts "There are now #{Complaint.count} rows in the complaints table"
+
+
+csv_text = File.read(Rails.root.join('lib', 'seed','app4', 'complaints-2022-11-11-2.csv'))
+csv = CSV.parse(csv_text, :headers => true)
+csv.each do |row|
+  t = Complaint.new
+  t.uid = row['uid']
+  t.call_date = row['call_date']
+  t.dealer = row['dealer']
+  t.product_name = row['product_name']
+  t.fault = row['fault']
+  t.complaint_status = row['complaint_status']
+  t.warranty = row['warranty']
+  t.mechenic = row['mechenic']
+  t.site_address = row['site_address']
+  t.coustomer_name = row['coustomer_name']
+  t.coustomer_address = row['coustomer_address']
+  t.coustomer_city = row['coustomer_city']
+  t.coustomer_phone = row['coustomer_phone']
+  t.product_sr_no = row['product_sr_no']
+  t.purchase_date = row['purchase_date']
+  t.createdby = row['createdby']
+  t.call_history = row['call_history']
+  t.save!
+end
+puts "There are now #{Complaint.count} rows in the complaints table"
+
+
+csv_text = File.read(Rails.root.join('lib', 'seed','app4', 'complaints-2022-11-11-3.csv'))
+csv = CSV.parse(csv_text, :headers => true)
+csv.each do |row|
+  t = Complaint.new
+  t.uid = row['uid']
+  t.call_date = row['call_date']
+  t.dealer = row['dealer']
+  t.product_name = row['product_name']
+  t.fault = row['fault']
+  t.complaint_status = row['complaint_status']
+  t.warranty = row['warranty']
+  t.mechenic = row['mechenic']
+  t.site_address = row['site_address']
+  t.coustomer_name = row['coustomer_name']
+  t.coustomer_address = row['coustomer_address']
+  t.coustomer_city = row['coustomer_city']
+  t.coustomer_phone = row['coustomer_phone']
+  t.product_sr_no = row['product_sr_no']
+  t.purchase_date = row['purchase_date']
+  t.createdby = row['createdby']
+  t.call_history = row['call_history']
+  t.save!
+end
+puts "There are now #{Complaint.count} rows in the complaints table"
 
 e = Employee.new
 e.email = "poonam@supreme.biz"
-e.password = "poonam"
-e.password_confirmation = "poonam"
+e.password = "Supreme@1234"
+e.password_confirmation = "Supreme@1234"
 e.contact = "1234567890"
 e.save!
