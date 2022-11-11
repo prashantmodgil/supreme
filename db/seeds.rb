@@ -46,7 +46,7 @@ csv.each do |row|
 end
 puts "There are now #{Mechenic.count} rows in the mechenic table"
 
-csv_text = File.read(Rails.root.join('lib', 'seed', 'app4','complaints-2022-11-11.csv'))
+csv_text = File.read(Rails.root.join('lib', 'seed', 'app4','complaints-2022-11-11-1.csv'))
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
   t = Complaint.new
@@ -70,32 +70,6 @@ csv.each do |row|
   t.save!
 end
 puts "There are now #{Complaint.count} rows in the complaints table"
-
-csv_text = File.read(Rails.root.join('lib', 'seed','app4', 'complaints-2022-11-11-1.csv'))
-csv = CSV.parse(csv_text, :headers => true)
-csv.each do |row|
-  t = Complaint.new
-  t.uid = row['uid']
-  t.call_date = row['call_date']
-  t.dealer = row['dealer']
-  t.product_name = row['product_name']
-  t.fault = row['fault']
-  t.complaint_status = row['complaint_status']
-  t.warranty = row['warranty']
-  t.mechenic = row['mechenic']
-  t.site_address = row['site_address']
-  t.coustomer_name = row['coustomer_name']
-  t.coustomer_address = row['coustomer_address']
-  t.coustomer_city = row['coustomer_city']
-  t.coustomer_phone = row['coustomer_phone']
-  t.product_sr_no = row['product_sr_no']
-  t.purchase_date = row['purchase_date']
-  t.createdby = row['createdby']
-  t.call_history = row['call_history']
-  t.save!
-end
-puts "There are now #{Complaint.count} rows in the complaints table"
-
 
 csv_text = File.read(Rails.root.join('lib', 'seed','app4', 'complaints-2022-11-11-2.csv'))
 csv = CSV.parse(csv_text, :headers => true)
@@ -124,6 +98,32 @@ puts "There are now #{Complaint.count} rows in the complaints table"
 
 
 csv_text = File.read(Rails.root.join('lib', 'seed','app4', 'complaints-2022-11-11-3.csv'))
+csv = CSV.parse(csv_text, :headers => true)
+csv.each do |row|
+  t = Complaint.new
+  t.uid = row['uid']
+  t.call_date = row['call_date']
+  t.dealer = row['dealer']
+  t.product_name = row['product_name']
+  t.fault = row['fault']
+  t.complaint_status = row['complaint_status']
+  t.warranty = row['warranty']
+  t.mechenic = row['mechenic']
+  t.site_address = row['site_address']
+  t.coustomer_name = row['coustomer_name']
+  t.coustomer_address = row['coustomer_address']
+  t.coustomer_city = row['coustomer_city']
+  t.coustomer_phone = row['coustomer_phone']
+  t.product_sr_no = row['product_sr_no']
+  t.purchase_date = row['purchase_date']
+  t.createdby = row['createdby']
+  t.call_history = row['call_history']
+  t.save!
+end
+puts "There are now #{Complaint.count} rows in the complaints table"
+
+
+csv_text = File.read(Rails.root.join('lib', 'seed','app4', 'complaints-2022-11-11-4.csv'))
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
   t = Complaint.new
