@@ -1,5 +1,5 @@
 class Complaint < ApplicationRecord
-  before_create :check_uid
+  # before_create :check_uid
   validates :mechenic,presence: true
   validates :createdby,presence: true
   validates :dealer,presence: true
